@@ -8,14 +8,14 @@ cfg = configuration_data()
 
 cpp = meson.get_compiler('cpp')
 
-cfg.set('mn_version', meson.project_version())
-cfg.set('mn_platform', host_machine.system())
-cfg.set('mn_compiler', cpp.get_id())
-cfg.set('mn_linker', cpp.get_linker_id())
+cfg.set_quoted('mn_version', meson.project_version())
+cfg.set_quoted('mn_platform', host_machine.system())
+cfg.set_quoted('mn_compiler', cpp.get_id())
+cfg.set_quoted('mn_linker', cpp.get_linker_id())
 cfg.set('mn_alignment', cpp.alignment('int'))
 cfg.set('mn_sizeInt', cpp.sizeof('int'))
-cfg.set('mn_arch', host_machine.cpu_family())
-cfg.set('mn_endian', host_machine.endian())
+cfg.set_quoted('mn_arch', host_machine.cpu_family())
+cfg.set_quoted('mn_endian', host_machine.endian())
 
 configure_file(configuration: cfg, output: 'MountainConfig.h', install: true, install_dir: 'share')
 
@@ -25,7 +25,7 @@ endif
 
 add_global_arguments(['-DGR_GL_CHECK_ERROR=0', '-DGR_GL_LOG_CALLS=0', '-DSK_GL=1'], language : ['cpp', 'c'])
 
-dependencies = [dependency('spdlog'), dependency('sdl2')]
+dependencies = [dependency('spdlog'), dependency('sdl2'), dependencies('rang')]
 
 inc_dirs = [ 'include' ]
 
