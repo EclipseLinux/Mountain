@@ -4,7 +4,7 @@ sources = [
     
 ]
 
-dependencies = []
+dependencies = [dependency('spdlog'), dependency('sdl2')]
 
 inc_dirs = [ 'include' ]
 
