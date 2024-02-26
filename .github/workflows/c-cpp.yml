@@ -23,13 +23,8 @@ jobs:
         run: pip install meson ninja
 
       - name: Install OpenGL
-        run: bash -c 'if [ "${{ runner.os }}" = "Linux" ];
-          then sudo apt-get update && sudo apt-get install -y libglu1-mesa-dev freeglut3-dev mesa-common-dev
-          elif [ "${{ runner.os }}" = "Windows" ];
-          then echo "OpenGL should be pre-installed on Windows."
-          elif [ "${{ runner.os }}" = "macOS" ];
-          then echo "OpenGL should be pre-installed on macOS."
-          fi'
+        if: ${{ startsWith(runner.os, 'Linux') }}
+        run: sudo apt-get update && sudo apt-get install -y libglu1-mesa-dev freeglut3-dev mesa-common-dev
 
       - name: Update WrapDB
         run: meson wrap update-db
