@@ -19,9 +19,6 @@ jobs:
       - name: Install Dependencies
         run: pip install meson ninja
 
-      - name: Install OpenGL
-        run: choco install opengl
-
       - name: Update WrapDB
         run: meson wrap update-db
 
