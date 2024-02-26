@@ -25,7 +25,7 @@ endif
 
 add_global_arguments(['-DGR_GL_CHECK_ERROR=0', '-DGR_GL_LOG_CALLS=0', '-DSK_GL=1'], language : ['cpp', 'c'])
 
-dependencies = [dependency('spdlog'), dependency('sdl2'), dependencies('rang')]
+dependencies = [dependency('spdlog'), dependency('sdl2'), dependency('rang')]
 
 inc_dirs = [ 'include' ]
 

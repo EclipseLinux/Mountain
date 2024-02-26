@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <memory>
 
 #define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_TRACE
@@ -35,6 +36,7 @@ namespace Mountain
 		static void Fatal(const std::string& msg, Args&&... args)
 		{
 			logger->critical(msg, args...);
+			Diagnose();
 			exit(1);
 		}
 
@@ -64,6 +66,12 @@ namespace Mountain
 			}
 		}
 #endif
+
+		static void Diagnose()
+		{
+			std::cout << "A " << rang::style::bold << "fatal" << rang::style::reset
+					  << " error ocurred that needs to be fixed" << '\n';
+		}
 
 		static void Init()
 		{
