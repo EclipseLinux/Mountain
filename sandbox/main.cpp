@@ -1,6 +1,4 @@
-#include "core/Logger.h"
-
-int main(int argc, const char** argv)
+auto main(int argc, const char** argv) -> int
 {
 	return 0;
 }
