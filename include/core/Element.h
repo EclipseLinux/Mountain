@@ -24,24 +24,40 @@ namespace Mountain
 			child->_init();
 			_children.push_back(child);
 
-			YGNodeInsertChild(_node, child->_node, YGNodeGetChildCount(_node));
+			InsertChild(child);
 			EmitSignal("childNew", child);
 
 			return this;
 		}
 
+		virtual ~Element();
+
 	protected:
+		/**
+		 * @brief Called when the Element is created
+		 *
+		 */
 		virtual void Init(){};
+
+		/**
+		 * @brief Called when the Element is being destroyed
+		 *
+		 */
+		virtual void Destroy(){};
+
+		/**
+		 * @brief Called when a child has to be inserted into the Element, useful for
+		 * custom layouts
+		 *
+		 * @param child Pointer to the child to insert
+		 */
+		virtual void InsertChild(Element* child);
 
 	private:
 		Element* _parent;
 		std::vector<Element*> _children;
-		YGNodeRef _node;
+		YGNodeRef _node{YGNodeNew()};
 
-		void _init()
-		{
-			_node = YGNodeNew();
-			Init();
-		}
+		void _init();
 	};
 }

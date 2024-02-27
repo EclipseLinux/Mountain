@@ -100,15 +100,16 @@ namespace Mountain
 		 * @param signal Signal to emit
 		 * @param data Data to pass to the handler, can be nullptr
 		 */
-		void EmitSignal(std::string& signal, void* data)
+		void EmitSignal(std::string signal, void* data)
 		{
 			signal = stringToLower(signal);
 
 			if (!_handlers.contains(signal))
 			{
-				mn_coreWarn("Tried to emit signal \"{}\", but no handlers of that signal "
-							"could be found",
-							signal);
+				mn_coreDebug(
+					"Tried to emit signal \"{}\", but no handlers of that signal "
+					"could be found",
+					signal);
 				return;
 			}
 

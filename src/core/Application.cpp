@@ -44,6 +44,6 @@ namespace Mountain
 
 		spdlog::set_default_logger(spdlog::default_logger()->clone(_appName));
 
-		mn_coreTrace("Initializing \"{}\", by \"{}\"", _appName, _appOrg);
+		mn_coreInfo("Initializing \"{}\", by \"{}\"", _appName, _appOrg);
 	}
 }
