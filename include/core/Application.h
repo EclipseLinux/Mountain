@@ -6,15 +6,14 @@ namespace Mountain
 	class Application
 	{
 	public:
-		const std::string AppIdRegex =
-			"[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)?";
+		const static std::string AppIdRegex;
 
 		Application(const std::string& appId);
 
 	private:
-		char* _appId;
-		char* _appName;
-		char* _appOrg;
-		char* _appDomain;
+		const char* _appId;
+		const char* _appName;
+		const char* _appOrg;
+		const char* _appDomain{""};
 	};
 }

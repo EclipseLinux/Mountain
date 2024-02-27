@@ -16,39 +16,39 @@ namespace Mountain
 		template <typename... Args>
 		static void Info(const std::string& msg, Args&&... args)
 		{
-			logger->info(msg, args...);
+			logger->info(fmt::runtime(msg), args...);
 		}
 
 		template <typename... Args>
 		static void Warn(const std::string& msg, Args&&... args)
 		{
-			logger->warn(msg, args...);
+			logger->warn(fmt::runtime(msg), args...);
 		}
 
 		template <typename... Args>
 		static void Error(const std::string& msg, Args&&... args)
 		{
-			logger->error(msg, args...);
+			logger->error(fmt::runtime(msg), args...);
 		}
 
 		template <typename... Args>
 		static void Fatal(const std::string& msg, Args&&... args)
 		{
-			logger->critical(msg, args...);
+			logger->critical(fmt::runtime(msg), args...);
 		}
 
 #ifdef DEBUG
 		template <typename... Args>
 		static void Debug(const std::string& msg, Args&&... args)
 		{
-			logger->debug(msg, args...);
+			logger->debug(fmt::runtime(msg), args...);
 		}
 #endif
 
 		template <typename... Args>
 		static void Trace(const std::string& msg, Args&&... args)
 		{
-			logger->trace(msg, args...);
+			logger->trace(fmt::runtime(msg), args...);
 		}
 
 #ifdef DEBUG
