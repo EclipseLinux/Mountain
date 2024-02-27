@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="d8/d19/classMountain_1_1SignalEmitter" kind="class" language="C++" prot="public">
+    <compoundname>Mountain::SignalEmitter</compoundname>
+    <derivedcompoundref refid="dc/df3/classMountain_1_1Element" prot="private" virt="non-virtual">Mountain::Element</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d8/d19/classMountain_1_1SignalEmitter_1a144eabc2a296b92ccb4cc5fbb3ce49fc" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, std::vector&lt; SignalHandler &gt; &gt;</type>
+        <definition>std::unordered_map&lt;std::string, std::vector&lt;SignalHandler&gt; &gt; Mountain::SignalEmitter&lt; T &gt;::_handlers</definition>
+        <argsstring></argsstring>
+        <name>_handlers</name>
+        <qualifiedname>Mountain::SignalEmitter::_handlers</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/SignalEmitter.h" line="138" column="20" bodyfile="include/core/SignalEmitter.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d8/d19/classMountain_1_1SignalEmitter_1affdbfafafb20d437eacc625f88b663c4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto Mountain::SignalEmitter&lt; T &gt;::On</definition>
+        <argsstring>(std::string &amp;signal, const SignalHandler &amp;handler) -&gt; T *</argsstring>
+        <name>On</name>
+        <qualifiedname>Mountain::SignalEmitter::On</qualifiedname>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>signal</declname>
+        </param>
+        <param>
+          <type>const SignalHandler &amp;</type>
+          <declname>handler</declname>
+        </param>
+        <briefdescription>
+<para>Attaches a signal handler to a specific signal so it gets called everytime it&apos;s emitted. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>signal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Signal to attach the handler to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>handler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback function that must take data based on the event (some have data, others nullptr) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>T* Same instance of the class, for chaining </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/SignalEmitter.h" line="31" column="6" bodyfile="include/core/SignalEmitter.h" bodystart="31" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d19/classMountain_1_1SignalEmitter_1a6ca213f84962a491caa1eb15d44dcfa5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto Mountain::SignalEmitter&lt; T &gt;::Remove</definition>
+        <argsstring>(std::string &amp;signal) -&gt; T *</argsstring>
+        <name>Remove</name>
+        <qualifiedname>Mountain::SignalEmitter::Remove</qualifiedname>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>signal</declname>
+        </param>
+        <briefdescription>
+<para>Tries to remove every handler for a specific signal. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>signal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Signal to remove the handlers from </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>T* Same instance of the class, for chaining </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/SignalEmitter.h" line="43" column="6" bodyfile="include/core/SignalEmitter.h" bodystart="43" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d19/classMountain_1_1SignalEmitter_1a6159377c33ce9a152167a9eec81e45dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto Mountain::SignalEmitter&lt; T &gt;::Remove</definition>
+        <argsstring>(std::string &amp;signal, SignalHandler &amp;handler) -&gt; T *</argsstring>
+        <name>Remove</name>
+        <qualifiedname>Mountain::SignalEmitter::Remove</qualifiedname>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>signal</declname>
+        </param>
+        <param>
+          <type>SignalHandler &amp;</type>
+          <declname>handler</declname>
+        </param>
+        <briefdescription>
+<para>Remove a specific signal handler from a signal. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>signal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Signal to remove the handler from </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>handler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Handler to remove </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>T* Same instance of the class, for chaining </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/SignalEmitter.h" line="66" column="6" bodyfile="include/core/SignalEmitter.h" bodystart="66" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d19/classMountain_1_1SignalEmitter_1a1eb661b8c81f3407af67f717603e06aa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto Mountain::SignalEmitter&lt; T &gt;::RemoveAll</definition>
+        <argsstring>() -&gt; T *</argsstring>
+        <name>RemoveAll</name>
+        <qualifiedname>Mountain::SignalEmitter::RemoveAll</qualifiedname>
+        <briefdescription>
+<para>Removes <emphasis>every</emphasis> signal and their handlers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>T* Same instance of the class, for chaining </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/SignalEmitter.h" line="90" column="6" bodyfile="include/core/SignalEmitter.h" bodystart="90" bodyend="94"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="d8/d19/classMountain_1_1SignalEmitter_1a693f90dc0991ef17b57d426b127eecbc" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mountain::SignalEmitter&lt; T &gt;::EmitSignal</definition>
+        <argsstring>(std::string &amp;signal, void *data)</argsstring>
+        <name>EmitSignal</name>
+        <qualifiedname>Mountain::SignalEmitter::EmitSignal</qualifiedname>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>signal</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Emit a signal, calling every attached callback function for that signal. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>signal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Signal to emit </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data to pass to the handler, can be nullptr </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/SignalEmitter.h" line="103" column="6" bodyfile="include/core/SignalEmitter.h" bodystart="103" bodyend="135"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Mountain::Element&lt; Element &gt;</label>
+        <link refid="dc/df3/classMountain_1_1Element"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Mountain::SignalEmitter&lt; T &gt;</label>
+      </node>
+    </inheritancegraph>
+    <location file="include/core/SignalEmitter.h" line="19" column="12" bodyfile="include/core/SignalEmitter.h" bodystart="20" bodyend="139"/>
+    <listofallmembers>
+      <member refid="d8/d19/classMountain_1_1SignalEmitter_1a144eabc2a296b92ccb4cc5fbb3ce49fc" prot="private" virt="non-virtual"><scope>Mountain::SignalEmitter</scope><name>_handlers</name></member>
+      <member refid="d8/d19/classMountain_1_1SignalEmitter_1a693f90dc0991ef17b57d426b127eecbc" prot="protected" virt="non-virtual"><scope>Mountain::SignalEmitter</scope><name>EmitSignal</name></member>
+      <member refid="d8/d19/classMountain_1_1SignalEmitter_1affdbfafafb20d437eacc625f88b663c4" prot="public" virt="non-virtual"><scope>Mountain::SignalEmitter</scope><name>On</name></member>
+      <member refid="d8/d19/classMountain_1_1SignalEmitter_1a6ca213f84962a491caa1eb15d44dcfa5" prot="public" virt="non-virtual"><scope>Mountain::SignalEmitter</scope><name>Remove</name></member>
+      <member refid="d8/d19/classMountain_1_1SignalEmitter_1a6159377c33ce9a152167a9eec81e45dc" prot="public" virt="non-virtual"><scope>Mountain::SignalEmitter</scope><name>Remove</name></member>
+      <member refid="d8/d19/classMountain_1_1SignalEmitter_1a1eb661b8c81f3407af67f717603e06aa" prot="public" virt="non-virtual"><scope>Mountain::SignalEmitter</scope><name>RemoveAll</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

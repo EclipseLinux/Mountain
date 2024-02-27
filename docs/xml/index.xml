@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.10.0" xml:lang="en-US">
+  <compound refid="de/d85/classMountain_1_1Application" kind="class"><name>Mountain::Application</name>
+    <member refid="de/d85/classMountain_1_1Application_1a75167d2e7c7cf518e04281be63aea5fd" kind="variable"><name>main</name></member>
+    <member refid="de/d85/classMountain_1_1Application_1a3c85233cce10febc989c3d8104255cca" kind="variable"><name>AppIdRegex</name></member>
+    <member refid="de/d85/classMountain_1_1Application_1a208077cea94701a2808bc4e300770c09" kind="variable"><name>_appId</name></member>
+    <member refid="de/d85/classMountain_1_1Application_1af526820de79e89166f09ea28e600f12c" kind="variable"><name>_appName</name></member>
+    <member refid="de/d85/classMountain_1_1Application_1ad71e646e18dfe962cae74f9a40a6f2b4" kind="variable"><name>_appOrg</name></member>
+    <member refid="de/d85/classMountain_1_1Application_1a7549c6518e4d7dccb90f4f20b6129fca" kind="variable"><name>_appDomain</name></member>
+    <member refid="de/d85/classMountain_1_1Application_1a3dfc9880c8fdf1fabefbb8210a36c572" kind="function"><name>Application</name></member>
+  </compound>
+  <compound refid="dc/df3/classMountain_1_1Element" kind="class"><name>Mountain::Element</name>
+    <member refid="dc/df3/classMountain_1_1Element_1abeac3bf5a74ecb6da44fb7b5a4a3d973" kind="variable"><name>Node</name></member>
+    <member refid="dc/df3/classMountain_1_1Element_1a71318366e42009e516e79f56a2536a24" kind="variable"><name>Children</name></member>
+  </compound>
+  <compound refid="db/dc0/classMountain_1_1Logger" kind="class"><name>Mountain::Logger</name>
+    <member refid="db/dc0/classMountain_1_1Logger_1adf12897c11d53400400df2584e21240b" kind="variable"><name>logger</name></member>
+    <member refid="db/dc0/classMountain_1_1Logger_1a5d9289a5dc39de38ca88effd416dbefc" kind="function"><name>Info</name></member>
+    <member refid="db/dc0/classMountain_1_1Logger_1acfd76683e516edab80fed7dac61ca149" kind="function"><name>Warn</name></member>
+    <member refid="db/dc0/classMountain_1_1Logger_1af01b4078fd14168df77614388d14651f" kind="function"><name>Error</name></member>
+    <member refid="db/dc0/classMountain_1_1Logger_1ae904a94b0c29dcf810f3190a5e9c0617" kind="function"><name>Fatal</name></member>
+    <member refid="db/dc0/classMountain_1_1Logger_1a6343c4d3b24ce3ad6a1cd8caa770b38c" kind="function"><name>Trace</name></member>
+    <member refid="db/dc0/classMountain_1_1Logger_1aeb62bc9936c91814f12f0f1c9195fcb7" kind="function"><name>Init</name></member>
+  </compound>
+  <compound refid="d8/d19/classMountain_1_1SignalEmitter" kind="class"><name>Mountain::SignalEmitter</name>
+    <member refid="d8/d19/classMountain_1_1SignalEmitter_1a144eabc2a296b92ccb4cc5fbb3ce49fc" kind="variable"><name>_handlers</name></member>
+    <member refid="d8/d19/classMountain_1_1SignalEmitter_1affdbfafafb20d437eacc625f88b663c4" kind="function"><name>On</name></member>
+    <member refid="d8/d19/classMountain_1_1SignalEmitter_1a6ca213f84962a491caa1eb15d44dcfa5" kind="function"><name>Remove</name></member>
+    <member refid="d8/d19/classMountain_1_1SignalEmitter_1a6159377c33ce9a152167a9eec81e45dc" kind="function"><name>Remove</name></member>
+    <member refid="d8/d19/classMountain_1_1SignalEmitter_1a1eb661b8c81f3407af67f717603e06aa" kind="function"><name>RemoveAll</name></member>
+    <member refid="d8/d19/classMountain_1_1SignalEmitter_1a693f90dc0991ef17b57d426b127eecbc" kind="function"><name>EmitSignal</name></member>
+  </compound>
+  <compound refid="d8/dda/namespaceMountain" kind="namespace"><name>Mountain</name>
+    <member refid="df/d2b/SignalEmitter_8h_1a0f5f86d1acea6395992a7cd053f23020" kind="typedef"><name>SignalHandler</name></member>
+  </compound>
+  <compound refid="d4/d1c/Application_8h" kind="file"><name>Application.h</name>
+  </compound>
+  <compound refid="d5/d76/Element_8h" kind="file"><name>Element.h</name>
+  </compound>
+  <compound refid="dd/da4/Logger_8h" kind="file"><name>Logger.h</name>
+    <member refid="dd/da4/Logger_8h_1ae4fda6f71f35120e2ff48157fca961b5" kind="define"><name>SPDLOG_ACTIVE_LEVEL</name></member>
+    <member refid="dd/da4/Logger_8h_1a5fccb4fc71e44089a1b1a77fc76c0b68" kind="define"><name>__FILENAME__</name></member>
+    <member refid="dd/da4/Logger_8h_1a50e8e92c2a6904f5bfbde9ee45704f19" kind="define"><name>mn_info</name></member>
+    <member refid="dd/da4/Logger_8h_1a46fd748482eab8f221d03ee4b117e3c1" kind="define"><name>mn_warn</name></member>
+    <member refid="dd/da4/Logger_8h_1adc0b75532e4fa29dda9cc013ac2b1b88" kind="define"><name>mn_error</name></member>
+    <member refid="dd/da4/Logger_8h_1a1197fe35f56535aa2fc52b0148a394bc" kind="define"><name>mn_fatal</name></member>
+    <member refid="dd/da4/Logger_8h_1aa0787dd0fb37583ff9ae2ca3a350b574" kind="define"><name>mn_trace</name></member>
+    <member refid="dd/da4/Logger_8h_1ae1e7e37c7e7088e2009fc8743db7b7a8" kind="define"><name>mn_debug</name></member>
+    <member refid="dd/da4/Logger_8h_1aba9369172d8e8b9d61f93182114a7b65" kind="define"><name>mn_assert</name></member>
+    <member refid="dd/da4/Logger_8h_1afe2eeb4a80928f8060d64c7941c1699b" kind="define"><name>mn_coreInfo</name></member>
+    <member refid="dd/da4/Logger_8h_1a3bce6a4e395858a393e2b0a99c697710" kind="define"><name>mn_coreWarn</name></member>
+    <member refid="dd/da4/Logger_8h_1a1724b11f682b450ca767200c8a933975" kind="define"><name>mn_coreError</name></member>
+    <member refid="dd/da4/Logger_8h_1abce47454c100869073b043d8217bd504" kind="define"><name>mn_coreFatal</name></member>
+    <member refid="dd/da4/Logger_8h_1ac557d2d129baec6eb96f50140cb9412c" kind="define"><name>mn_coreTrace</name></member>
+    <member refid="dd/da4/Logger_8h_1a6eec636ccf665649d797a219252443ea" kind="define"><name>mn_coreDebug</name></member>
+    <member refid="dd/da4/Logger_8h_1a422e5ded85bdb96678f55776dfe4adca" kind="define"><name>mn_coreAssert</name></member>
+  </compound>
+  <compound refid="df/d2b/SignalEmitter_8h" kind="file"><name>SignalEmitter.h</name>
+  </compound>
+  <compound refid="d9/d8d/Demangler_8h" kind="file"><name>Demangler.h</name>
+    <member refid="d9/d8d/Demangler_8h_1ab83da1b3fb0e2c79439ba50ab2361154" kind="function"><name>demangle</name></member>
+  </compound>
+  <compound refid="d4/d8f/StringUtils_8h" kind="file"><name>StringUtils.h</name>
+    <member refid="d4/d8f/StringUtils_8h_1a1079f4841f8957c577ef63ec0cde2a1e" kind="function"><name>stringReplace</name></member>
+    <member refid="d4/d8f/StringUtils_8h_1a92140aeaa25dd56eb848dc1c2344a5b5" kind="function"><name>stringToUpper</name></member>
+    <member refid="d4/d8f/StringUtils_8h_1a577b53b4fc09f96f5d25105c3757a5e8" kind="function"><name>stringToLower</name></member>
+    <member refid="d4/d8f/StringUtils_8h_1a08b9177e41aeae2ecaae491bf904a891" kind="function"><name>stringSplit</name></member>
+  </compound>
+  <compound refid="dir_3d69f64eaf81436fe2b22361382717e5" kind="dir"><name>include/core</name>
+  </compound>
+  <compound refid="dir_d44c64559bbebec7f509842c48db8b23" kind="dir"><name>include</name>
+  </compound>
+  <compound refid="dir_821002d4f10779a80d4fb17bc32f21f1" kind="dir"><name>include/utils</name>
+  </compound>
+</doxygenindex>

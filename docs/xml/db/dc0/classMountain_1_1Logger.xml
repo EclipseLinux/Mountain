@@ -1,0 +1,344 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="db/dc0/classMountain_1_1Logger" kind="class" language="C++" prot="public">
+    <compoundname>Mountain::Logger</compoundname>
+    <includes refid="dd/da4/Logger_8h" local="no">Logger.h</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="db/dc0/classMountain_1_1Logger_1adf12897c11d53400400df2584e21240b" prot="private" static="yes" mutable="no">
+        <type>std::shared_ptr&lt; spdlog::logger &gt;</type>
+        <definition>std::shared_ptr&lt;spdlog::logger&gt; Mountain::Logger::logger</definition>
+        <argsstring></argsstring>
+        <name>logger</name>
+        <qualifiedname>Mountain::Logger::logger</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/Logger.h" line="148" column="31" bodyfile="include/core/Logger.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="db/dc0/classMountain_1_1Logger_1a5d9289a5dc39de38ca88effd416dbefc" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Mountain::Logger::Info</definition>
+        <argsstring>(const std::string &amp;msg, Args &amp;&amp;... args)</argsstring>
+        <name>Info</name>
+        <qualifiedname>Mountain::Logger::Info</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Logs with an &quot;info&quot; level, and green. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Any fmt formattable type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message to log </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments to format the message with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/Logger.h" line="30" column="13" bodyfile="include/core/Logger.h" bodystart="30" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dc0/classMountain_1_1Logger_1acfd76683e516edab80fed7dac61ca149" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Mountain::Logger::Warn</definition>
+        <argsstring>(const std::string &amp;msg, Args &amp;&amp;... args)</argsstring>
+        <name>Warn</name>
+        <qualifiedname>Mountain::Logger::Warn</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Logs with a &quot;warn&quot; level, and yellow. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Any fmt formattable type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message to log </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments to format the message with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/Logger.h" line="43" column="13" bodyfile="include/core/Logger.h" bodystart="43" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dc0/classMountain_1_1Logger_1af01b4078fd14168df77614388d14651f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Mountain::Logger::Error</definition>
+        <argsstring>(const std::string &amp;msg, Args &amp;&amp;... args)</argsstring>
+        <name>Error</name>
+        <qualifiedname>Mountain::Logger::Error</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Logs with an &quot;error&quot; level, and red. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Any fmt formattable type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message to log </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments to format the message with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/Logger.h" line="56" column="13" bodyfile="include/core/Logger.h" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dc0/classMountain_1_1Logger_1ae904a94b0c29dcf810f3190a5e9c0617" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Mountain::Logger::Fatal</definition>
+        <argsstring>(const std::string &amp;msg, Args &amp;&amp;... args)</argsstring>
+        <name>Fatal</name>
+        <qualifiedname>Mountain::Logger::Fatal</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Logs with a &quot;critical&quot; level, and <emphasis>bold</emphasis> red. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Any fmt formattable type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message to log </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments to format the message with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/Logger.h" line="69" column="13" bodyfile="include/core/Logger.h" bodystart="69" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dc0/classMountain_1_1Logger_1a6343c4d3b24ce3ad6a1cd8caa770b38c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Mountain::Logger::Trace</definition>
+        <argsstring>(const std::string &amp;msg, Args &amp;&amp;... args)</argsstring>
+        <name>Trace</name>
+        <qualifiedname>Mountain::Logger::Trace</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Logs with a &quot;trace&quot; level, and no color. crazy, right? </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Any fmt formattable type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message to log </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments to format the message with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/Logger.h" line="97" column="13" bodyfile="include/core/Logger.h" bodystart="97" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="db/dc0/classMountain_1_1Logger_1aeb62bc9936c91814f12f0f1c9195fcb7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Mountain::Logger::Init</definition>
+        <argsstring>()</argsstring>
+        <name>Init</name>
+        <qualifiedname>Mountain::Logger::Init</qualifiedname>
+        <briefdescription>
+<para>Simply initialize the loggers, with their patterns, names, and stuff. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Done automatically by <simplesect kind="see"><para><ref refid="de/d85/classMountain_1_1Application" kindref="compound">Application</ref> when initializing, don&apos;t worry </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/Logger.h" line="134" column="13" bodyfile="include/core/Logger.h" bodystart="134" bodyend="145"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Simple class for logging with pretty colors, and fast. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Used only by Mountain, as it has the huge &quot;Mountain&quot; name on it. For normal logging, use the &quot;mn_&quot; related macros </para>
+    </detaileddescription>
+    <location file="include/core/Logger.h" line="19" column="1" bodyfile="include/core/Logger.h" bodystart="20" bodyend="149"/>
+    <listofallmembers>
+      <member refid="db/dc0/classMountain_1_1Logger_1af01b4078fd14168df77614388d14651f" prot="public" virt="non-virtual"><scope>Mountain::Logger</scope><name>Error</name></member>
+      <member refid="db/dc0/classMountain_1_1Logger_1ae904a94b0c29dcf810f3190a5e9c0617" prot="public" virt="non-virtual"><scope>Mountain::Logger</scope><name>Fatal</name></member>
+      <member refid="db/dc0/classMountain_1_1Logger_1a5d9289a5dc39de38ca88effd416dbefc" prot="public" virt="non-virtual"><scope>Mountain::Logger</scope><name>Info</name></member>
+      <member refid="db/dc0/classMountain_1_1Logger_1aeb62bc9936c91814f12f0f1c9195fcb7" prot="public" virt="non-virtual"><scope>Mountain::Logger</scope><name>Init</name></member>
+      <member refid="db/dc0/classMountain_1_1Logger_1adf12897c11d53400400df2584e21240b" prot="private" virt="non-virtual"><scope>Mountain::Logger</scope><name>logger</name></member>
+      <member refid="db/dc0/classMountain_1_1Logger_1a6343c4d3b24ce3ad6a1cd8caa770b38c" prot="public" virt="non-virtual"><scope>Mountain::Logger</scope><name>Trace</name></member>
+      <member refid="db/dc0/classMountain_1_1Logger_1acfd76683e516edab80fed7dac61ca149" prot="public" virt="non-virtual"><scope>Mountain::Logger</scope><name>Warn</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

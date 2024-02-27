@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="de/d85/classMountain_1_1Application" kind="class" language="C++" prot="public">
+    <compoundname>Mountain::Application</compoundname>
+    <includes refid="d4/d1c/Application_8h" local="no">Application.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="de/d85/classMountain_1_1Application_1a75167d2e7c7cf518e04281be63aea5fd" prot="public" static="yes" mutable="no">
+        <type><ref refid="de/d85/classMountain_1_1Application" kindref="compound">Application</ref> *</type>
+        <definition>Application* Mountain::Application::main</definition>
+        <argsstring></argsstring>
+        <name>main</name>
+        <qualifiedname>Mountain::Application::main</qualifiedname>
+        <briefdescription>
+<para>Unique instance of an <ref refid="de/d85/classMountain_1_1Application" kindref="compound">Application</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>There can only be one instance globally (singleton) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/Application.h" line="18" column="27" bodyfile="include/core/Application.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d85/classMountain_1_1Application_1a3c85233cce10febc989c3d8104255cca" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string Mountain::Application::AppIdRegex</definition>
+        <argsstring></argsstring>
+        <name>AppIdRegex</name>
+        <qualifiedname>Mountain::Application::AppIdRegex</qualifiedname>
+        <initializer>=
+			&quot;[a-zA-Z0-9_-]+\\.[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)?&quot;</initializer>
+        <briefdescription>
+<para>Simple RegEx describing <ref refid="de/d85/classMountain_1_1Application" kindref="compound">Application</ref> Identifiers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Used for internal purposes, but meh </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/Application.h" line="24" column="33" bodyfile="include/core/Application.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="de/d85/classMountain_1_1Application_1a208077cea94701a2808bc4e300770c09" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* Mountain::Application::_appId</definition>
+        <argsstring></argsstring>
+        <name>_appId</name>
+        <qualifiedname>Mountain::Application::_appId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/Application.h" line="35" column="12" bodyfile="include/core/Application.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d85/classMountain_1_1Application_1af526820de79e89166f09ea28e600f12c" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* Mountain::Application::_appName</definition>
+        <argsstring></argsstring>
+        <name>_appName</name>
+        <qualifiedname>Mountain::Application::_appName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/Application.h" line="36" column="12" bodyfile="include/core/Application.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d85/classMountain_1_1Application_1ad71e646e18dfe962cae74f9a40a6f2b4" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* Mountain::Application::_appOrg</definition>
+        <argsstring></argsstring>
+        <name>_appOrg</name>
+        <qualifiedname>Mountain::Application::_appOrg</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/Application.h" line="37" column="12" bodyfile="include/core/Application.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d85/classMountain_1_1Application_1a7549c6518e4d7dccb90f4f20b6129fca" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* Mountain::Application::_appDomain</definition>
+        <argsstring></argsstring>
+        <name>_appDomain</name>
+        <qualifiedname>Mountain::Application::_appDomain</qualifiedname>
+        <initializer>{&quot;&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/Application.h" line="38" column="12" bodyfile="include/core/Application.h" bodystart="38" bodyend="38"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/d85/classMountain_1_1Application_1a3dfc9880c8fdf1fabefbb8210a36c572" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mountain::Application::Application</definition>
+        <argsstring>(const std::string &amp;appId)</argsstring>
+        <name>Application</name>
+        <qualifiedname>Mountain::Application::Application</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>appId</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new <ref refid="de/d85/classMountain_1_1Application" kindref="compound">Application</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>appId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="de/d85/classMountain_1_1Application" kindref="compound">Application</ref> Identifier, must match the </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="de/d85/classMountain_1_1Application_1a3c85233cce10febc989c3d8104255cca" kindref="member">AppIdRegex</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/Application.h" line="32" column="1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Main starting point of every application built on top of Mountain. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Mountain::Application</label>
+        <link refid="de/d85/classMountain_1_1Application"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>main</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/core/Application.h" line="10" column="1" bodyfile="include/core/Application.h" bodystart="11" bodyend="39"/>
+    <listofallmembers>
+      <member refid="de/d85/classMountain_1_1Application_1a7549c6518e4d7dccb90f4f20b6129fca" prot="private" virt="non-virtual"><scope>Mountain::Application</scope><name>_appDomain</name></member>
+      <member refid="de/d85/classMountain_1_1Application_1a208077cea94701a2808bc4e300770c09" prot="private" virt="non-virtual"><scope>Mountain::Application</scope><name>_appId</name></member>
+      <member refid="de/d85/classMountain_1_1Application_1af526820de79e89166f09ea28e600f12c" prot="private" virt="non-virtual"><scope>Mountain::Application</scope><name>_appName</name></member>
+      <member refid="de/d85/classMountain_1_1Application_1ad71e646e18dfe962cae74f9a40a6f2b4" prot="private" virt="non-virtual"><scope>Mountain::Application</scope><name>_appOrg</name></member>
+      <member refid="de/d85/classMountain_1_1Application_1a3c85233cce10febc989c3d8104255cca" prot="public" virt="non-virtual"><scope>Mountain::Application</scope><name>AppIdRegex</name></member>
+      <member refid="de/d85/classMountain_1_1Application_1a3dfc9880c8fdf1fabefbb8210a36c572" prot="public" virt="non-virtual"><scope>Mountain::Application</scope><name>Application</name></member>
+      <member refid="de/d85/classMountain_1_1Application_1a75167d2e7c7cf518e04281be63aea5fd" prot="public" virt="non-virtual"><scope>Mountain::Application</scope><name>main</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

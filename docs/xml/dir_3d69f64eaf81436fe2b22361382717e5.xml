@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="dir_3d69f64eaf81436fe2b22361382717e5" kind="dir">
+    <compoundname>include/core</compoundname>
+    <innerfile refid="d4/d1c/Application_8h">Application.h</innerfile>
+    <innerfile refid="d5/d76/Element_8h">Element.h</innerfile>
+    <innerfile refid="dd/da4/Logger_8h">Logger.h</innerfile>
+    <innerfile refid="df/d2b/SignalEmitter_8h">SignalEmitter.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/core/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="dc/df3/classMountain_1_1Element" kind="class" language="C++" prot="public">
+    <compoundname>Mountain::Element</compoundname>
+    <basecompoundref prot="private" virt="non-virtual">Mountain::SignalEmitter&lt; Element &gt;</basecompoundref>
+    <includes refid="d5/d76/Element_8h" local="no">Element.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="dc/df3/classMountain_1_1Element_1abeac3bf5a74ecb6da44fb7b5a4a3d973" prot="protected" static="no" mutable="no">
+        <type>YGNodeRef</type>
+        <definition>YGNodeRef Mountain::Element::Node</definition>
+        <argsstring></argsstring>
+        <name>Node</name>
+        <qualifiedname>Mountain::Element::Node</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/Element.h" line="16" column="11" bodyfile="include/core/Element.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dc/df3/classMountain_1_1Element_1a71318366e42009e516e79f56a2536a24" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="dc/df3/classMountain_1_1Element" kindref="compound">Element</ref> * &gt;</type>
+        <definition>std::vector&lt;Element*&gt; Mountain::Element::Children</definition>
+        <argsstring></argsstring>
+        <name>Children</name>
+        <qualifiedname>Mountain::Element::Children</qualifiedname>
+        <briefdescription>
+<para>Children of the <ref refid="dc/df3/classMountain_1_1Element" kindref="compound">Element</ref>, to make a tree. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/Element.h" line="21" column="13" bodyfile="include/core/Element.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Base class for the whole Mountain project, allowing you to create UI objects Also emits singlas. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/core/Element.h" line="12" column="1" bodyfile="include/core/Element.h" bodystart="13" bodyend="22"/>
+    <listofallmembers>
+      <member refid="dc/df3/classMountain_1_1Element_1a71318366e42009e516e79f56a2536a24" prot="protected" virt="non-virtual"><scope>Mountain::Element</scope><name>Children</name></member>
+      <member refid="dc/df3/classMountain_1_1Element_1abeac3bf5a74ecb6da44fb7b5a4a3d973" prot="protected" virt="non-virtual"><scope>Mountain::Element</scope><name>Node</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

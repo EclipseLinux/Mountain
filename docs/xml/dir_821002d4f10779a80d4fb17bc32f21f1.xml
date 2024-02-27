@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="dir_821002d4f10779a80d4fb17bc32f21f1" kind="dir">
+    <compoundname>include/utils</compoundname>
+    <innerfile refid="d9/d8d/Demangler_8h">Demangler.h</innerfile>
+    <innerfile refid="d4/d8f/StringUtils_8h">StringUtils.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/utils/"/>
+  </compounddef>
+</doxygen>

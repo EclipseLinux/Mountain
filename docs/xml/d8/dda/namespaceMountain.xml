@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="d8/dda/namespaceMountain" kind="namespace" language="C++">
+    <compoundname>Mountain</compoundname>
+    <innerclass refid="de/d85/classMountain_1_1Application" prot="public">Mountain::Application</innerclass>
+    <innerclass refid="dc/df3/classMountain_1_1Element" prot="public">Mountain::Element</innerclass>
+    <innerclass refid="db/dc0/classMountain_1_1Logger" prot="public">Mountain::Logger</innerclass>
+    <innerclass refid="d8/d19/classMountain_1_1SignalEmitter" prot="public">Mountain::SignalEmitter</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="df/d2b/SignalEmitter_8h_1a0f5f86d1acea6395992a7cd053f23020" prot="public" static="no">
+        <type>std::function&lt; void(void *)&gt;</type>
+        <definition>using Mountain::SignalHandler =  std::function&lt;void(void*)&gt;</definition>
+        <argsstring></argsstring>
+        <name>SignalHandler</name>
+        <qualifiedname>Mountain::SignalHandler</qualifiedname>
+        <briefdescription>
+<para>Simple wrapper around a function pointer that can take in a void pointer as data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/SignalEmitter.h" line="17" column="1" bodyfile="include/core/SignalEmitter.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/core/Application.h" line="4" column="1"/>
+  </compounddef>
+</doxygen>
