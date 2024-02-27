@@ -1,7 +1,7 @@
 #include "utils/StringUtils.h"
 #include <algorithm>
 
-void stringReplace(std::string& str, const std::string& src, const std::string& dest)
+void stringReplace(std::string str, const std::string& src, const std::string& dest)
 {
 	if (src.empty())
 	{
@@ -15,14 +15,14 @@ void stringReplace(std::string& str, const std::string& src, const std::string& 
 	}
 }
 
-auto stringToUpper(std::string& str) -> std::string
+auto stringToUpper(std::string str) -> std::string
 {
 	std::transform(str.begin(), str.end(), str.begin(), ::toupper);
 
 	return str;
 }
 
-auto stringToLower(std::string& str) -> std::string
+auto stringToLower(std::string str) -> std::string
 {
 	std::transform(str.begin(), str.end(), str.begin(), ::tolower);
 

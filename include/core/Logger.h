@@ -10,27 +10,61 @@
 
 namespace Mountain
 {
+	/**
+	 * @brief Simple class for logging with pretty colors, and fast
+	 *
+	 * Used only by Mountain, as it has the huge "Mountain" name on it.
+	 * For normal logging, use the "mn_" related macros
+	 */
 	class Logger
 	{
 	public:
+		/**
+		 * @brief Logs with an "info" level, and green
+		 *
+		 * @tparam Args Any fmt formattable type
+		 * @param msg Message to log
+		 * @param args Arguments to format the message with
+		 */
 		template <typename... Args>
 		static void Info(const std::string& msg, Args&&... args)
 		{
 			logger->info(fmt::runtime(msg), args...);
 		}
 
+		/**
+		 * @brief Logs with a "warn" level, and yellow
+		 *
+		 * @tparam Args Any fmt formattable type
+		 * @param msg Message to log
+		 * @param args Arguments to format the message with
+		 */
 		template <typename... Args>
 		static void Warn(const std::string& msg, Args&&... args)
 		{
 			logger->warn(fmt::runtime(msg), args...);
 		}
 
+		/**
+		 * @brief Logs with an "error" level, and red
+		 *
+		 * @tparam Args Any fmt formattable type
+		 * @param msg Message to log
+		 * @param args Arguments to format the message with
+		 */
 		template <typename... Args>
 		static void Error(const std::string& msg, Args&&... args)
 		{
 			logger->error(fmt::runtime(msg), args...);
 		}
 
+		/**
+		 * @brief Logs with a "critical" level, and *bold* red
+		 *
+		 * @tparam Args Any fmt formattable type
+		 * @param msg Message to log
+		 * @param args Arguments to format the message with
+		 */
 		template <typename... Args>
 		static void Fatal(const std::string& msg, Args&&... args)
 		{
@@ -38,6 +72,13 @@ namespace Mountain
 		}
 
 #ifdef DEBUG
+		/**
+		 * @brief Logs with a "debug" level, and cyan
+		 *
+		 * @tparam Args Any fmt formattable type
+		 * @param msg Message to log
+		 * @param args Arguments to format the message with
+		 */
 		template <typename... Args>
 		static void Debug(const std::string& msg, Args&&... args)
 		{
@@ -45,6 +86,13 @@ namespace Mountain
 		}
 #endif
 
+		/**
+		 * @brief Logs with a "trace" level, and no color. crazy, right?
+		 *
+		 * @tparam Args Any fmt formattable type
+		 * @param msg Message to log
+		 * @param args Arguments to format the message with
+		 */
 		template <typename... Args>
 		static void Trace(const std::string& msg, Args&&... args)
 		{
@@ -52,6 +100,20 @@ namespace Mountain
 		}
 
 #ifdef DEBUG
+		/**
+		 * @brief Used only internally by Mountain, but still available
+		 *
+		 * @param condition Condition to check, the message will only print if this
+		 * evaluates to @code {.cpp} false
+		 * @endcode
+		 *
+		 * @param conditionStr Basically the condition, but in string format
+		 * @param file Filename where the assert came from
+		 * @param msg Message to print if it evaluates to false
+		 * @param line Line number where the assert came from
+
+		 * This is supposed to be used in macros, don't expect simplicity
+		 */
 		static void Assert(bool condition, const std::string& conditionStr,
 						   const std::string& file, const std::string& msg, int line)
 		{
@@ -64,6 +126,11 @@ namespace Mountain
 		}
 #endif
 
+		/**
+		 * @brief Simply initialize the loggers, with their patterns, names, and stuff
+		 *
+		 * Done automatically by @see Application when initializing, don't worry
+		 */
 		static void Init()
 		{
 			logger = spdlog::stdout_color_mt("Mountain");

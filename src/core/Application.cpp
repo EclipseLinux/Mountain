@@ -46,7 +46,4 @@ namespace Mountain
 
 		mn_coreTrace("Initializing \"{}\", by \"{}\"", _appName, _appOrg);
 	}
-
-	const std::string Application::AppIdRegex =
-		"[a-zA-Z0-9_-]+\\.[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)?";
 }
