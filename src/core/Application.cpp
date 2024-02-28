@@ -10,6 +10,12 @@ namespace Mountain
 	{
 		Mountain::Logger::Init();
 
+		if (main != nullptr)
+		{
+			mn_coreError("There is another instance of Mountain::Application!");
+			return;
+		}
+
 #ifdef DEBUG
 		if (!std::regex_match(appId, std::regex(AppIdRegex)))
 		{
@@ -45,5 +51,17 @@ namespace Mountain
 		spdlog::set_default_logger(spdlog::default_logger()->clone(_appName));
 
 		mn_coreInfo("Initializing \"{}\", by \"{}\"", _appName, _appOrg);
+	}
+
+	void Application::Present()
+	{
+		if (_trees.empty())
+		{
+			mn_coreTrace(
+				"There are no main UI trees existing, are they attached to \"{}\"?",
+				_appId);
+
+			return;
+		}
 	}
 }

@@ -1,5 +1,7 @@
 #pragma once
+#include "core/Element.h"
 #include <string>
+#include <vector>
 
 namespace Mountain
 {
@@ -31,10 +33,20 @@ namespace Mountain
 		 */
 		Application(const std::string& appId);
 
+		/**
+		 * @brief Actually does all the heavy-lifting, such as creating windows and stuff
+		 *
+		 * Call this after creating every main element in your application,
+		 * or whenever you feel like creating a window and stuff
+		 */
+		void Present();
+
 	private:
 		const char* _appId;
 		const char* _appName;
 		const char* _appOrg;
 		const char* _appDomain{""};
+
+		std::vector<Element*> _trees;
 	};
 }

@@ -9,7 +9,7 @@ namespace Mountain
 {
 	/**
 	 * @brief Base class for the whole Mountain project, allowing you to create UI objects
-	 * Also emits singlas
+	 * Also emits signals
 	 */
 	class Element : public SignalEmitter<Element>
 	{
@@ -29,6 +29,15 @@ namespace Mountain
 
 			return this;
 		}
+
+		inline auto ChildrenCount() -> unsigned long
+		{
+			return _children.size();
+		}
+
+#ifdef DEBUG
+		auto ToString() -> std::string;
+#endif
 
 		virtual ~Element();
 
