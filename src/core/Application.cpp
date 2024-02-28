@@ -1,4 +1,5 @@
 #include "core/Application.h"
+#include "SDL.h"
 #include "core/Logger.h"
 #include "utils/StringUtils.h"
 #include <regex>
@@ -70,7 +71,50 @@ namespace Mountain
 
 		for (auto& element : _trees)
 		{
+			element->Present();
 			element->Tick();
 		}
+
+		// that means we have windows created and that we need to go into event loop and
+		// shi
+		if (_sdlInitialized && _mainWindow != nullptr)
+		{
+			SDL_Event event;
+
+			while (main->_mainWindow->Running())
+			{
+				SDL_WaitEvent(&event);
+				if (event.type == SDL_QUIT)
+				{
+					Quit();
+				}
+			}
+		}
+	}
+
+	void Application::Quit()
+	{
+		for (auto& element : _trees)
+		{
+			delete element;
+		}
+
+		if (_sdlInitialized)
+		{
+			SDL_Quit();
+		}
+
+		Reset();
+	}
+
+	Application::~Application()
+	{
+		if (!_presented)
+		{
+			return;
+		}
+
+		Quit();
+		main = nullptr;
 	}
 }

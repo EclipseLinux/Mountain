@@ -1,11 +1,12 @@
-project('Mountain', ['cpp', 'c'], version: '0.0.3', default_options: ['cpp_std=c++20'])
+project('Mountain', ['cpp', 'c'], version: '0.0.4', default_options: ['cpp_std=c++20'])
 
 sources = [
     'src/core/Application.cpp',
     'src/utils/Demangler.cpp',
     'src/utils/StringUtils.cpp',
     'src/core/Element.cpp',
-    'src/utils/System.cpp'
+    'src/utils/System.cpp',
+    'src/components/Window.cpp'
 ]
 
 cfg = configuration_data()

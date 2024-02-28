@@ -1,4 +1,5 @@
 #pragma once
+#include "components/Window.h"
 #include "core/Element.h"
 #include <string>
 #include <vector>
@@ -35,12 +36,23 @@ namespace Mountain
 		Application(const std::string& appId);
 
 		/**
+		 * @brief Destroy the Application object
+		 */
+		~Application();
+
+		/**
 		 * @brief Actually does all the heavy-lifting, such as creating windows and stuff
 		 *
 		 * Call this after creating every main element in your application,
 		 * or whenever you feel like creating a window and stuff
 		 */
 		void Present();
+
+		/**
+		 * @brief Makes the application close any existing Windows and stuff
+		 *
+		 */
+		void Quit();
 
 		/**
 		 * @brief Attaches an element into an application so it can be presented
@@ -50,6 +62,19 @@ namespace Mountain
 		inline void Attach(Element* element)
 		{
 			_trees.push_back(element);
+		}
+
+		inline auto CreateWindow(const std::string& title, int width, int height)
+			-> Components::Window*
+		{
+			auto* win = new Components::Window(title, width, height);
+			if (_mainWindow == nullptr)
+			{
+				_mainWindow = win;
+			}
+
+			Attach(win);
+			return win;
 		}
 
 #ifdef DEBUG
@@ -88,7 +113,13 @@ namespace Mountain
 		const char* _appOrg;
 		const char* _appDomain{""};
 
+		bool _sdlInitialized;
+
 		std::vector<Element*> _trees;
 		bool _presented;
+
+		Components::Window* _mainWindow{nullptr};
+
+		friend class Components::Window;
 	};
 }

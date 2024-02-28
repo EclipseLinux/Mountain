@@ -121,6 +121,16 @@ namespace Mountain
 		// Get
 
 		/**
+		 * @brief Gets the Yoga Node of the Element
+		 *
+		 * @return YGNodeRef Reference to the node in the Yoga Layout tree
+		 */
+		inline auto YogaNode() -> YGNodeRef
+		{
+			return _node;
+		}
+
+		/**
 		 * @brief Gets the current Width of the Element
 		 *
 		 * @return float Width
@@ -317,6 +327,13 @@ namespace Mountain
 		 */
 		auto Y() -> float;
 #pragma endregion
+
+		/**
+		 * @brief Called when the @see Application requests for this element to be
+		 * presented to the user
+		 *
+		 */
+		virtual void Present(){};
 
 	protected:
 		/**
