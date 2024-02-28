@@ -40,7 +40,7 @@ mountain_dep = declare_dependency(link_with: mountain, dependencies: dependencie
 
 if get_option('tests') and get_option('debug')
     gtest = dependency('gtest')
-    gtest_mock = dependency('gtest_mock')
+    gtest_mock = dependency('gmock')
 
     tests_src = [
         

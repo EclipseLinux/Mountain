@@ -99,7 +99,7 @@ namespace Mountain
 		virtual void Draw(){};
 
 		void Tick();
-		virtual void Render();
+		virtual void Render(){};
 
 #pragma region Layout related stuff
 		/*
