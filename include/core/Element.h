@@ -1,4 +1,5 @@
 #pragma once
+#include "core/LayoutEnums.h"
 #include "core/SignalEmitter.h"
 #include "yoga/YGNodeLayout.h"
 #ifdef DEBUG
@@ -117,6 +118,8 @@ namespace Mountain
 		 * Layout stuff
 		 */
 
+		// Get
+
 		/**
 		 * @brief Gets the current Width of the Element
 		 *
@@ -130,6 +133,13 @@ namespace Mountain
 		 * @return float Height
 		 */
 		auto Height() -> float;
+
+		/**
+		 * @brief Gets the current padding of the Element (left + top + bottom + right)
+		 *
+		 * @return float Padding (or padding in CSS)
+		 */
+		auto Padding() -> float;
 
 		/**
 		 * @brief Gets the current left padding of the Element
@@ -158,6 +168,52 @@ namespace Mountain
 		 * @return float Bottom padding (or padding-bottom in CSS)
 		 */
 		auto PaddingBottom() -> float;
+
+		/**
+		 * @brief Get the current mode of justifying content
+		 *
+		 * For more information, see the CSS Flexbox specification
+		 * (https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+		 * @return Layout::JustifyContent Current mode of justifying content
+		 */
+		auto JustifyContent() -> Layout::JustifyContent;
+
+		/**
+		 * @brief Get the current mode of aligning items
+		 *
+		 * For more information, see the CSS Flexbox specification
+		 * (https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)
+		 * @return Layout::AlignItems Current mode of aligning items
+		 */
+		auto AlignItems() -> Layout::AlignItems;
+
+		/**
+		 * @brief Get the current direction of the Flexbox
+		 *
+		 * For more information, see the CSS Flexbox specification
+		 * (https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
+		 * @return Layout::FlexDirection Current mode of aligning items
+		 */
+		auto FlexDirection() -> Layout::FlexDirection;
+
+		/**
+		 * @brief Get the current gap between elements in the Flexbox
+		 *
+		 * For more information, see the CSS Flexbox specification
+		 * (https://developer.mozilla.org/en-US/docs/Web/CSS/gap)
+		 * @return float Current gap between elements
+		 */
+		auto Gap() -> float;
+
+		// Set
+
+		/**
+		 * @brief Sets the current padding of the Element (left + top + right + bottom)
+		 *
+		 * @param newPadding New padding to set it to
+		 * @return Element* Reference to the element, for chaining
+		 */
+		auto Padding(float newPadding) -> Element*;
 
 		/**
 		 * @brief Sets the current left padding of the Element
@@ -190,6 +246,46 @@ namespace Mountain
 		 * @return Element* Reference to the element, for chaining
 		 */
 		auto PaddingBottom(float newPadding) -> Element*;
+
+		/**
+		 * @brief Sets the current mode of justifying content
+		 *
+		 * @param newJustify New mode to set it to
+		 * For more information, see the CSS Flexbox specification
+		 * (https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+		 * @return Element* Reference to the element, for chaining
+		 */
+		auto JustifyContent(Layout::JustifyContent newJustify) -> Element*;
+
+		/**
+		 * @brief Sets the current mode of aligning items
+		 *
+		 * @param newAlign New mode to set it to
+		 * For more information, see the CSS Flexbox specification
+		 * (https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)
+		 * @return Element* Reference to the element, for chaining
+		 */
+		auto AlignItems(Layout::AlignItems newAlign) -> Element*;
+
+		/**
+		 * @brief Sets the current gap between elements in the Flexbox
+		 *
+		 * @param newGap New gap to set it to
+		 * For more information, see the CSS Flexbox specification
+		 * (https://developer.mozilla.org/en-US/docs/Web/CSS/gap)
+		 * @return Element* Reference to the element, for chaining
+		 */
+		auto Gap(float newGap) -> Element*;
+
+		/**
+		 * @brief Sets the current direction of the Flexbox
+		 *
+		 * @param newDirection New direction to set it to
+		 * For more information, see the CSS Flexbox specification
+		 * (https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
+		 * @return Element* Reference to the element, for chaining
+		 */
+		auto FlexDirection(Layout::FlexDirection newDirection) -> Element*;
 
 		/**
 		 * @brief Sets the current Width of the Element

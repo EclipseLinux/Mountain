@@ -122,12 +122,22 @@ namespace Mountain
 
 	auto Element::Width(float newWidth) -> Element*
 	{
+		if (newWidth == 0)
+		{
+			YGNodeStyleSetWidthAuto(_node);
+			return this;
+		}
 		YGNodeStyleSetWidth(_node, newWidth);
 		return this;
 	}
 
 	auto Element::Height(float newHeight) -> Element*
 	{
+		if (newHeight == 0)
+		{
+			YGNodeStyleSetHeightAuto(_node);
+			return this;
+		}
 		YGNodeStyleSetHeight(_node, newHeight);
 		return this;
 	}
@@ -156,6 +166,12 @@ namespace Mountain
 		return this;
 	}
 
+	auto Element::Padding(float newPadding) -> Element*
+	{
+		YGNodeStyleSetPadding(_node, YGEdgeAll, newPadding);
+		return this;
+	}
+
 	auto Element::PaddingBottom() -> float
 	{
 		return YGNodeLayoutGetPadding(_node, YGEdgeBottom);
@@ -174,6 +190,55 @@ namespace Mountain
 	auto Element::PaddingRight() -> float
 	{
 		return YGNodeLayoutGetPadding(_node, YGEdgeRight);
+	}
+
+	auto Element::Padding() -> float
+	{
+		return YGNodeLayoutGetPadding(_node, YGEdgeAll);
+	}
+
+	auto Element::JustifyContent() -> Layout::JustifyContent
+	{
+		return (Layout::JustifyContent)YGNodeStyleGetJustifyContent(_node);
+	}
+
+	auto Element::AlignItems() -> Layout::AlignItems
+	{
+		return (Layout::AlignItems)YGNodeStyleGetAlignItems(_node);
+	}
+
+	auto Element::Gap() -> float
+	{
+		return YGNodeStyleGetGap(_node, YGGutterAll);
+	}
+
+	auto Element::Gap(float newGap) -> Element*
+	{
+		YGNodeStyleSetGap(_node, YGGutterAll, newGap);
+		return this;
+	}
+
+	auto Element::FlexDirection() -> Layout::FlexDirection
+	{
+		return (Layout::FlexDirection)YGNodeStyleGetFlexDirection(_node);
+	}
+
+	auto Element::FlexDirection(Layout::FlexDirection newDirection) -> Element*
+	{
+		YGNodeStyleSetFlexDirection(_node, (YGFlexDirection)newDirection);
+		return this;
+	}
+
+	auto Element::JustifyContent(Layout::JustifyContent newJustify) -> Element*
+	{
+		YGNodeStyleSetJustifyContent(_node, (YGJustify)newJustify);
+		return this;
+	}
+
+	auto Element::AlignItems(Layout::AlignItems newAlign) -> Element*
+	{
+		YGNodeStyleSetAlignItems(_node, (YGAlign)newAlign);
+		return this;
 	}
 
 	auto Element::X() -> float
