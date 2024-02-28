@@ -34,3 +34,6 @@ jobs:
 
       - name: Build Project
         run: ninja -C build
+
+      - name: Test Project
+        run: cd build && meson test
