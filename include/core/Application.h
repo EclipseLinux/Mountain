@@ -17,7 +17,7 @@ namespace Mountain
 		 *
 		 * There can only be one instance globally (singleton)
 		 */
-		inline static Application* main;
+		inline static Application* main{nullptr};
 		/**
 		 * @brief Simple RegEx describing Application Identifiers
 		 *

@@ -17,17 +17,20 @@ namespace Mountain
 	class Element : public SignalEmitter<Element>
 	{
 	public:
+		Element();
+
 		template <typename T, typename... Args> auto AddChild(Args&&... args) -> Element*
 		{
 			static_assert(std::is_base_of<Element, T>::value,
 						  "Expected T to be of type, or derived from Element");
 
 			auto child = new T(args...);
-			child->_parent = this;
-			child->_init();
-			_children.push_back(child);
-
 			InsertChild(child);
+			child->_parent = this;
+			child->Init();
+			_children.push_back(child);
+			child->_init();
+
 			EmitSignal("childNew", child);
 
 			return this;
@@ -84,9 +87,9 @@ namespace Mountain
 		 */
 		virtual inline auto ToString() -> std::string
 		{
-			return demangle(typeid(*this).name()) + " " + std::to_string(Width()) + "x" +
-				   std::to_string(Height()) + " " + std::to_string(X()) + ", " +
-				   std::to_string(Y());
+			return demangle(typeid(*this).name()) + " " + std::to_string((int)Width()) +
+				   "x" + std::to_string((int)Height()) + " " +
+				   std::to_string((int)X()).substr(0, 3) + "," + std::to_string((int)Y());
 		}
 #endif
 
@@ -166,14 +169,26 @@ namespace Mountain
 		virtual void CalculateLayout();
 
 	private:
-		Element* _parent;
+		Element* _parent{nullptr};
 		std::vector<Element*> _children;
-		YGNodeRef _node{YGNodeNew()};
+		YGNodeRef _node;
 
-		float _x;
-		float _y;
+		bool _updated;
+
+		float _x{0};
+		float _y{0};
 
 		void _init();
+
+		inline auto _getX() -> float
+		{
+			return _x + (_parent != nullptr ? _parent->_getX() : 0);
+		}
+
+		inline auto _getY() -> float
+		{
+			return _y + (_parent != nullptr ? _parent->_getY() : 0);
+		}
 
 #ifdef DEBUG
 		void _print(int depth = 0);

@@ -6,6 +6,10 @@
 
 namespace Mountain
 {
+	Element::Element()
+	{
+		_init();
+	}
 	Element::~Element()
 	{
 		Destroy();
@@ -19,8 +23,8 @@ namespace Mountain
 
 	void Element::_init()
 	{
-		Init();
-		Tick();
+		_node = YGNodeNew();
+		CalculateLayout();
 	}
 
 	void Element::Tick()
@@ -32,9 +36,10 @@ namespace Mountain
 			child->Update();
 		}
 
-		if (YGNodeIsDirty(_node))
+		if (!_updated)
 		{
 			CalculateLayout();
+			_updated = true;
 		}
 	}
 
@@ -45,7 +50,7 @@ namespace Mountain
 
 		for (size_t i = 0; i < (size_t)depth; i++)
 		{
-			indent += "		";
+			indent += "	";
 		}
 
 		mn_coreDebug(indent + ToString());
@@ -62,6 +67,7 @@ namespace Mountain
 
 		for (const auto& child : _children)
 		{
+			str += " ";
 			child->_toSExpr(str);
 		}
 
@@ -72,7 +78,9 @@ namespace Mountain
 
 	void Element::CalculateLayout()
 	{
-		YGNodeCalculateLayout(_node, YGUndefined, YGUndefined, YGDirectionInherit);
+		YGNodeCalculateLayout(_node, YGUndefined, YGUndefined, YGDirectionLTR);
+		_x = _getX() + YGNodeLayoutGetLeft(_node);
+		_y = _getY() + YGNodeLayoutGetTop(_node);
 	}
 
 	void Element::InsertChild(Element* child)
@@ -92,9 +100,10 @@ namespace Mountain
 
 	auto Element::X() -> float
 	{
-		if (YGNodeIsDirty(_node))
+		if (!_updated)
 		{
 			CalculateLayout();
+			_updated = true;
 		}
 
 		return _x;
@@ -102,9 +111,10 @@ namespace Mountain
 
 	auto Element::Y() -> float
 	{
-		if (YGNodeIsDirty(_node))
+		if (!_updated)
 		{
 			CalculateLayout();
+			_updated = true;
 		}
 
 		return _y;

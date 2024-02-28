@@ -27,6 +27,8 @@ namespace Mountain
 		}
 #endif
 
+		main = this;
+
 		_appId = appId.c_str();
 
 		auto segments = stringSplit(appId, ".");

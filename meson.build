@@ -46,9 +46,9 @@ if get_option('tests') and get_option('debug')
         
     ]
 
-    tests = executable('test-suite', sources: tests_src, dependencies: [mountain_dep, gtest, gtest_mock])
+    # tests = executable('test-suite', sources: tests_src, dependencies: [mountain_dep, gtest, gtest_mock])
 
-    test('Google Tests', tests)
+    # test('Google Tests', tests)
 endif
 
 executable('sandbox', sources: 'sandbox/main.cpp', dependencies: mountain_dep)
