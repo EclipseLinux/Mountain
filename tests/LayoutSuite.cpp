@@ -1,6 +1,6 @@
-#include "_deps/googletest-src/googletest/include/gtest/gtest.h"
 #include "core/Application.h"
 #include "core/LayoutEnums.h"
+#include "gtest/gtest.h"
 
 using namespace Mountain;
 

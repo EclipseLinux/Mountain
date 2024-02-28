@@ -1,5 +1,5 @@
-#include "_deps/googletest-src/googletest/include/gtest/gtest.h"
 #include "core/Application.h"
+#include "gtest/gtest.h"
 
 int main(int argc, const char** argv)
 {
