@@ -1,4 +1,4 @@
-project('Mountain', ['cpp', 'c'], version: '0.0.1', default_options: ['cpp_std=c++20'])
+project('Mountain', ['cpp', 'c'], version: '0.0.3', default_options: ['cpp_std=c++20'])
 
 sources = [
     'src/core/Application.cpp',
