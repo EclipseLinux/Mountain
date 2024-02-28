@@ -35,5 +35,10 @@ jobs:
       - name: Build Project
         run: ninja -C build
 
-      - name: Test Project
-        run: cd build && meson test
+      - name: Test Project (Linux)
+        if: ${{ startsWith(runner.os, 'Linux') }}
+        run: cd build && ./test-suite
+
+      - name: Test Project (Windows)
+        if: ${{ startsWith(runner.os, 'Windows') }}
+        run: cd build && ./test-suite.exe
