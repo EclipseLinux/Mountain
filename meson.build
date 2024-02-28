@@ -38,7 +38,7 @@ mountain = library('mountain', sources: sources, dependencies: dependencies, inc
 
 mountain_dep = declare_dependency(link_with: mountain, dependencies: dependencies, include_directories: include_directories(inc_dirs))
 
-if get_option('test') and get_option('debug')
+if get_option('tests') and get_option('debug')
     gtest = dependency('gtest')
     gtest_mock = dependency('gtest_mock')
 
