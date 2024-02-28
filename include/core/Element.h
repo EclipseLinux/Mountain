@@ -1,5 +1,6 @@
 #pragma once
 #include "core/SignalEmitter.h"
+#include "yoga/YGNodeLayout.h"
 #ifdef DEBUG
 #	include "utils/Demangler.h"
 #endif
@@ -19,6 +20,14 @@ namespace Mountain
 	public:
 		Element();
 
+		/**
+		 * @brief Add a new child to the Element, updating the layout if needed
+		 *
+		 * @tparam T Type of Element to add, must be derived from Element of course
+		 * @tparam Args Any type of argument passable to the Element constructor
+		 * @param args Arguments to pass to the Element constructor, if needed
+		 * @return Element* New element added
+		 */
 		template <typename T, typename... Args> auto AddChild(Args&&... args) -> Element*
 		{
 			static_assert(std::is_base_of<Element, T>::value,
@@ -29,11 +38,10 @@ namespace Mountain
 			child->_parent = this;
 			child->Init();
 			_children.push_back(child);
-			child->_init();
 
 			EmitSignal("childNew", child);
 
-			return this;
+			return child;
 		}
 
 		/**
@@ -88,8 +96,8 @@ namespace Mountain
 		virtual inline auto ToString() -> std::string
 		{
 			return demangle(typeid(*this).name()) + " " + std::to_string((int)Width()) +
-				   "x" + std::to_string((int)Height()) + " " +
-				   std::to_string((int)X()).substr(0, 3) + "," + std::to_string((int)Y());
+				   "x" + std::to_string((int)Height()) + " " + std::to_string((int)X()) +
+				   "," + std::to_string((int)Y());
 		}
 #endif
 
@@ -124,16 +132,90 @@ namespace Mountain
 		auto Height() -> float;
 
 		/**
-		 * @brief Gets the current X Position of the Element, re-calculating the layout if
-		 * needed
+		 * @brief Gets the current left padding of the Element
+		 *
+		 * @return float Left padding (or padding-left in CSS)
+		 */
+		auto PaddingLeft() -> float;
+
+		/**
+		 * @brief Gets the current right padding of the Element
+		 *
+		 * @return float Right padding (or padding-right in CSS)
+		 */
+		auto PaddingRight() -> float;
+
+		/**
+		 * @brief Gets the current top padding of the Element
+		 *
+		 * @return float Top padding (or padding-top in CSS)
+		 */
+		auto PaddingTop() -> float;
+
+		/**
+		 * @brief Gets the current bottom padding of the Element
+		 *
+		 * @return float Bottom padding (or padding-bottom in CSS)
+		 */
+		auto PaddingBottom() -> float;
+
+		/**
+		 * @brief Sets the current left padding of the Element
+		 *
+		 * @param newPadding New padding to set it to
+		 * @return Element* Reference to the element, for chaining
+		 */
+		auto PaddingLeft(float newPadding) -> Element*;
+
+		/**
+		 * @brief Sets the current right padding of the Element
+		 *
+		 * @param newPadding New padding to set it to
+		 * @return Element* Reference to the element, for chaining
+		 */
+		auto PaddingRight(float newPadding) -> Element*;
+
+		/**
+		 * @brief Sets the current top padding of the Element
+		 *
+		 * @param newPadding New padding to set it to
+		 * @return Element* Reference to the element, for chaining
+		 */
+		auto PaddingTop(float newPadding) -> Element*;
+
+		/**
+		 * @brief Sets the current bottom padding of the Element
+		 *
+		 * @param newPadding New padding to set it to
+		 * @return Element* Reference to the element, for chaining
+		 */
+		auto PaddingBottom(float newPadding) -> Element*;
+
+		/**
+		 * @brief Sets the current Width of the Element
+		 *
+		 * @param newWidth New width to set it to
+		 * @return Element* Reference to the element, for chaining
+		 */
+		auto Width(float newWidth) -> Element*;
+
+		/**
+		 * @brief Sets the current Height of the Element
+		 *
+		 * @param newWidth New height to set it to
+		 * @return Element* Reference to the element, for chaining
+		 */
+		auto Height(float newHeight) -> Element*;
+
+		/**
+		 * @brief Gets the current X Position of the Element
 		 *
 		 * @return float X Position
 		 */
 		auto X() -> float;
 
 		/**
-		 * @brief Gets the current Y Position of the Element, re-calculating the layout if
-		 * needed
+		 * @brief Gets the current Y Position of the Element
 		 *
 		 * @return float Y Position
 		 */
@@ -173,26 +255,23 @@ namespace Mountain
 		std::vector<Element*> _children;
 		YGNodeRef _node;
 
-		bool _updated;
-
-		float _x{0};
-		float _y{0};
-
-		void _init();
-
-		inline auto _getX() -> float
-		{
-			return _x + (_parent != nullptr ? _parent->_getX() : 0);
-		}
-
-		inline auto _getY() -> float
-		{
-			return _y + (_parent != nullptr ? _parent->_getY() : 0);
-		}
+		void _init(float width, float height);
 
 #ifdef DEBUG
 		void _print(int depth = 0);
 		auto _toSExpr(std::string& str) -> std::string;
 #endif
+
+		inline auto _x() -> float
+		{
+			return _parent == nullptr ? YGNodeLayoutGetLeft(_node)
+									  : YGNodeLayoutGetLeft(_node) + _parent->_x();
+		}
+
+		inline auto _y() -> float
+		{
+			return _parent == nullptr ? YGNodeLayoutGetTop(_node)
+									  : YGNodeLayoutGetTop(_node) + _parent->_y();
+		}
 	};
 }

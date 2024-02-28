@@ -65,5 +65,12 @@ namespace Mountain
 
 			return;
 		}
+
+		_presented = true;
+
+		for (auto& element : _trees)
+		{
+			element->Tick();
+		}
 	}
 }

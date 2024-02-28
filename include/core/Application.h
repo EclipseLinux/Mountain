@@ -18,6 +18,7 @@ namespace Mountain
 		 * There can only be one instance globally (singleton)
 		 */
 		inline static Application* main{nullptr};
+
 		/**
 		 * @brief Simple RegEx describing Application Identifiers
 		 *
@@ -41,6 +42,46 @@ namespace Mountain
 		 */
 		void Present();
 
+		/**
+		 * @brief Attaches an element into an application so it can be presented
+		 *
+		 * @param element Element to attach
+		 */
+		inline void Attach(Element* element)
+		{
+			_trees.push_back(element);
+		}
+
+#ifdef DEBUG
+		/**
+		 * @brief Resets the application back to it's original state, used in testing
+		 *
+		 */
+		inline static void Reset()
+		{
+			main->_presented = false;
+
+			for (auto& tree : main->_trees)
+			{
+				delete tree;
+			}
+
+			main->_trees.clear();
+		}
+#endif
+
+		/**
+		 * @brief Get whether the Present() method has been called
+		 *
+		 * @return true If it has been called before
+		 * @return false If it has not been called before, or if there is no application
+		 * running
+		 */
+		[[nodiscard]] inline static auto Presented() -> bool
+		{
+			return main != nullptr ? main->_presented : false;
+		}
+
 	private:
 		const char* _appId;
 		const char* _appName;
@@ -48,5 +89,6 @@ namespace Mountain
 		const char* _appDomain{""};
 
 		std::vector<Element*> _trees;
+		bool _presented;
 	};
 }

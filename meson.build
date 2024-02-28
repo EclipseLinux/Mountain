@@ -43,12 +43,13 @@ if get_option('tests') and get_option('debug')
     gtest_mock = dependency('gmock')
 
     tests_src = [
-        
+        'tests/main.cpp',
+        'tests/LayoutSuite.cpp'
     ]
 
-    # tests = executable('test-suite', sources: tests_src, dependencies: [mountain_dep, gtest, gtest_mock])
+    tests = executable('test-suite', sources: tests_src, dependencies: [mountain_dep, gtest, gtest_mock])
 
-    # test('Google Tests', tests)
+    test('Google Tests', tests)
 endif
 
 executable('sandbox', sources: 'sandbox/main.cpp', dependencies: mountain_dep)

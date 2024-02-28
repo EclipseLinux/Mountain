@@ -5,13 +5,15 @@ auto main(int argc, const char** argv) -> int
 {
 	auto* app = new Mountain::Application("com.eclipse.sandbox");
 
-	auto* ele = new Mountain::Element();
-	auto* ele2 = ele->AddChild<Mountain::Element>();
+	auto* ele = (new Mountain::Element())->Width(900)->Height(900);
+	ele->AddChild<Mountain::Element>()->Width(300)->Height(300);
+	ele->AddChild<Mountain::Element>()->Width(300)->Height(300);
+	ele->AddChild<Mountain::Element>()->Width(300)->Height(300);
 
-	ele2->AddChild<Mountain::Element>();
+	app->Attach(ele);
+	app->Present();
 
 	ele->Print();
-	mn_info(ele->ToSExpression());
 
 	delete app;
 	return 0;
