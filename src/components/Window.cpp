@@ -23,6 +23,15 @@ namespace Mountain::Components
 								   SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE |
 									   SDL_WINDOW_ALLOW_HIGHDPI);
 
+		if (_window == nullptr)
+		{
+			mn_coreError("Failed to create SDL Window: {}", SDL_GetError());
+			_running = false;
+			return;
+		}
+
+		_context = SDL_GL_CreateContext(_window);
+
 		int xpos;
 		int ypos;
 
@@ -30,6 +39,12 @@ namespace Mountain::Components
 
 		YGNodeStyleSetPosition(YogaNode(), YGEdgeLeft, (float)xpos);
 		YGNodeStyleSetPosition(YogaNode(), YGEdgeTop, (float)ypos);
+	}
+
+	void Window::Render()
+	{
+		SDL_GL_MakeCurrent(_window, _context);
+		SDL_GL_SwapWindow(_window);
 	}
 
 	void Window::SdlInit()

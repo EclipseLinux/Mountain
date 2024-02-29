@@ -12,6 +12,7 @@ namespace Mountain::Components
 		~Window();
 
 		void Present() override;
+		void Render() override;
 		void Close();
 
 		inline auto Running() const -> bool
@@ -23,6 +24,7 @@ namespace Mountain::Components
 		static void SdlInit();
 
 		SDL_Window* _window;
+		SDL_GLContext _context;
 		std::string _title;
 		bool _running;
 	};

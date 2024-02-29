@@ -28,9 +28,9 @@ namespace Mountain
 		 * have data, others nullptr)
 		 * @return T* Same instance of the class, for chaining
 		 */
-		auto On(std::string& signal, const SignalHandler& handler) -> T*
+		auto On(std::string signal, const SignalHandler& handler) -> T*
 		{
-			_handlers[stringToLower(signal)].push_back(handler);
+			_handlers[stringToLower(std::move(signal))].push_back(handler);
 			return (T*)this;
 		}
 
@@ -40,9 +40,9 @@ namespace Mountain
 		 * @param signal Signal to remove the handlers from
 		 * @return T* Same instance of the class, for chaining
 		 */
-		auto Remove(std::string& signal) -> T*
+		auto Remove(std::string signal) -> T*
 		{
-			signal = stringToLower(signal);
+			signal = stringToLower(std::move(signal));
 
 			if (!_handlers.contains(signal))
 			{
@@ -63,9 +63,9 @@ namespace Mountain
 		 * @param handler Handler to remove
 		 * @return T* Same instance of the class, for chaining
 		 */
-		auto Remove(std::string& signal, SignalHandler& handler) -> T*
+		auto Remove(std::string signal, SignalHandler& handler) -> T*
 		{
-			signal = stringToLower(signal);
+			signal = stringToLower(std::move(signal));
 
 			if (!_handlers.contains(signal))
 			{
@@ -93,14 +93,13 @@ namespace Mountain
 			return (T*)this;
 		}
 
-	protected:
 		/**
 		 * @brief Emit a signal, calling every attached callback function for that signal
 		 *
 		 * @param signal Signal to emit
 		 * @param data Data to pass to the handler, can be nullptr
 		 */
-		void EmitSignal(std::string signal, void* data)
+		void EmitSignal(std::string signal, void* data = nullptr)
 		{
 			signal = stringToLower(signal);
 

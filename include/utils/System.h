@@ -9,6 +9,9 @@
 
 namespace Mountain::Internals
 {
+	class RenderSystem;
+	class TickSystem;
+
 	class System
 	{
 	public:
@@ -90,4 +93,12 @@ namespace Mountain::Internals
 		inline static unsigned int currentSystems;
 		static void Run(const std::shared_ptr<System>& system);
 	};
+
+	inline std::shared_ptr<RenderSystem> _renderSystem;
+	inline std::shared_ptr<TickSystem> _tickSystem;
+	inline std::shared_ptr<System> _miscSystem;
 }
+
+#define mn_renderSys Mountain::Internals::_renderSystem
+#define mn_tickSys Mountain::Internals::_tickSystem
+#define mn_workerSys Mountain::Internals::_miscSystem

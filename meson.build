@@ -6,7 +6,8 @@ sources = [
     'src/utils/StringUtils.cpp',
     'src/core/Element.cpp',
     'src/utils/System.cpp',
-    'src/components/Window.cpp'
+    'src/components/Window.cpp',
+    'src/utils/SystemDefinition.cpp'
 ]
 
 cfg = configuration_data()

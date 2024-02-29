@@ -2,6 +2,8 @@
 #include "SDL.h"
 #include "core/Logger.h"
 #include "utils/StringUtils.h"
+#include "utils/System.h"
+#include "utils/SystemDefinition.h"
 #include <regex>
 #include <spdlog/spdlog.h>
 
@@ -71,20 +73,34 @@ namespace Mountain
 
 		for (auto& element : _trees)
 		{
-			element->Present();
 			element->Tick();
+			element->Present();
 		}
+
+		EmitSignal("present");
 
 		// that means we have windows created and that we need to go into event loop and
 		// shi
 		if (_sdlInitialized && _mainWindow != nullptr)
 		{
-			SDL_Event event;
+			mn_renderSys = Internals::SystemManager::AddSystem<Internals::RenderSystem>();
+			mn_tickSys = Internals::SystemManager::AddSystem<Internals::TickSystem>();
+			mn_workerSys = Internals::SystemManager::AddSystem<Internals::System>();
 
-			while (main->_mainWindow->Running())
+			_run();
+		}
+	}
+
+	void Application::_run()
+	{
+		SDL_Event event;
+
+		while (main->_mainWindow->Running())
+		{
+			while (SDL_WaitEvent(&event) != 0)
 			{
-				SDL_WaitEvent(&event);
-				if (event.type == SDL_QUIT)
+				if (event.type == SDL_QUIT ||
+					event.type == SDL_EventType::SDL_APP_TERMINATING)
 				{
 					Quit();
 				}
@@ -94,27 +110,30 @@ namespace Mountain
 
 	void Application::Quit()
 	{
-		for (auto& element : _trees)
-		{
-			delete element;
-		}
-
-		if (_sdlInitialized)
-		{
-			SDL_Quit();
-		}
-
-		Reset();
-	}
-
-	Application::~Application()
-	{
 		if (!_presented)
 		{
 			return;
 		}
 
+		Internals::SystemManager::Shutdown();
+
+		for (auto& element : _trees)
+		{
+			delete element;
+		}
+
+		_trees.clear();
+
+		if (_sdlInitialized)
+		{
+			SDL_Quit();
+			_sdlInitialized = false;
+		}
+	}
+
+	Application::~Application()
+	{
 		Quit();
-		main = nullptr;
+		Reset();
 	}
 }

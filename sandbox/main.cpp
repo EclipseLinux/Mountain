@@ -8,9 +8,9 @@ auto main(int argc, const char** argv) -> int
 
 	auto* win = app->CreateWindow("Sandbox", 800, 600);
 
-	app->Present();
+	app->On("present", [=](...) { win->Print(); });
 
-	win->Print();
+	app->Present();
 
 	delete app;
 	return 0;

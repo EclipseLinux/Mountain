@@ -1,6 +1,8 @@
 #pragma once
 #include "components/Window.h"
 #include "core/Element.h"
+#include "core/SignalEmitter.h"
+#include "utils/SystemDefinition.h"
 #include <string>
 #include <vector>
 
@@ -10,7 +12,7 @@ namespace Mountain
 	 * @brief Main starting point of every application built on top of Mountain
 	 *
 	 */
-	class Application
+	class Application : public SignalEmitter<Application>
 	{
 	public:
 		/**
@@ -113,6 +115,9 @@ namespace Mountain
 		const char* _appOrg;
 		const char* _appDomain{""};
 
+		void _run();
+		static void RegisterSignals();
+
 		bool _sdlInitialized;
 
 		std::vector<Element*> _trees;
@@ -121,5 +126,7 @@ namespace Mountain
 		Components::Window* _mainWindow{nullptr};
 
 		friend class Components::Window;
+		friend class Internals::RenderSystem;
+		friend class Internals::TickSystem;
 	};
 }
