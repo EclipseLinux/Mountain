@@ -1,0 +1,13 @@
+defines = -DNDEBUG -DSK_CODEC_DECODES_BMP -DSK_CODEC_DECODES_WBMP -DSK_DISABLE_LEGACY_VULKAN_MUTABLE_TEXTURE_STATE -DSKIA_DLL -DSK_R32_SHIFT=16 -DSK_ENABLE_PRECOMPILE -DSK_GANESH -DSK_DISABLE_TRACING -DSK_USE_PERFETTO -DSK_GAMMA_APPLY_TO_A8 -DSK_ANGLE -DSK_ENABLE_AVX512_OPTS -DSKIA_IMPLEMENTATION=1 -DSK_CODEC_DECODES_WEBP
+framework_dirs =
+include_dirs = -I../..
+cflags = -Wno-attributes -fstrict-aliasing -fPIC -fvisibility=hidden -O3 -fdata-sections -ffunction-sections -isystem /home/sheerapi/Eclipse/projects/Mountain/subprojects/skia/third_party/externals/libwebp/src -isystem /home/sheerapi/Eclipse/projects/Mountain/subprojects/skia/third_party/externals/libwebp
+cflags_cc = -std=c++17 -fvisibility-inlines-hidden -fno-exceptions -fno-rtti
+root_out_dir = .
+target_output_name = webp_decode
+
+build obj/src/codec/webp_decode.SkWebpCodec.o: cxx ../../src/codec/SkWebpCodec.cpp
+  source_file_part = SkWebpCodec.cpp
+  source_name_part = SkWebpCodec
+
+build obj/webp_decode.stamp: stamp obj/src/codec/webp_decode.SkWebpCodec.o || ./libwebp.a ./libwebp_sse41.a

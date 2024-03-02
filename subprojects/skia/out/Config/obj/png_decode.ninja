@@ -1,0 +1,16 @@
+defines = -DNDEBUG -DSK_CODEC_DECODES_BMP -DSK_CODEC_DECODES_WBMP -DSK_DISABLE_LEGACY_VULKAN_MUTABLE_TEXTURE_STATE -DSKIA_DLL -DSK_R32_SHIFT=16 -DSK_ENABLE_PRECOMPILE -DSK_GANESH -DSK_DISABLE_TRACING -DSK_USE_PERFETTO -DSK_GAMMA_APPLY_TO_A8 -DSK_ANGLE -DSK_ENABLE_AVX512_OPTS -DSKIA_IMPLEMENTATION=1 -DSK_CODEC_DECODES_ICO -DSK_CODEC_DECODES_PNG
+framework_dirs =
+include_dirs = -I../..
+cflags = -Wno-attributes -fstrict-aliasing -fPIC -fvisibility=hidden -O3 -fdata-sections -ffunction-sections -isystem /home/sheerapi/Eclipse/projects/Mountain/subprojects/skia/third_party/libpng -isystem /home/sheerapi/Eclipse/projects/Mountain/subprojects/skia/third_party/externals/libpng
+cflags_cc = -std=c++17 -fvisibility-inlines-hidden -fno-exceptions -fno-rtti
+root_out_dir = .
+target_output_name = png_decode
+
+build obj/src/codec/png_decode.SkIcoCodec.o: cxx ../../src/codec/SkIcoCodec.cpp
+  source_file_part = SkIcoCodec.cpp
+  source_name_part = SkIcoCodec
+build obj/src/codec/png_decode.SkPngCodec.o: cxx ../../src/codec/SkPngCodec.cpp
+  source_file_part = SkPngCodec.cpp
+  source_name_part = SkPngCodec
+
+build obj/png_decode.stamp: stamp obj/src/codec/png_decode.SkIcoCodec.o obj/src/codec/png_decode.SkPngCodec.o || ./libpng.a ./libzlib.a obj/third_party/zlib/zlib_adler32_simd.stamp obj/third_party/zlib/zlib_common_headers.stamp obj/third_party/zlib/zlib_inflate_chunk_simd.stamp obj/third_party/zlib/zlib_slide_hash_simd.stamp obj/third_party/zlib/zlib_crc32_simd.stamp
