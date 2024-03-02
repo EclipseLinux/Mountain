@@ -1,6 +1,8 @@
 # Prerequisites
 *.d
 
+!subprojects/skia/out/Config/*
+
 # Compiled Object files
 *.slo
 *.lo
