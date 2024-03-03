@@ -3,7 +3,7 @@
 git clone 'https://chromium.googlesource.com/chromium/tools/depot_tools.git'
 export PATH="${PWD}/depot_tools:${PATH}"
 
-python3 tools/git-sync-deps
+gclient sync
 
 gn gen out/$1/$2 --args="is_official_build = true
 cc=\"$3 $CFLAGS\"
