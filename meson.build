@@ -25,6 +25,8 @@ cfg.set_quoted('mn_endian', host_machine.endian())
 
 configure_file(configuration: cfg, output: 'MountainConfig.h', install: true, install_dir: 'share')
 
+add_project_arguments(['-DGR_GL_CHECK_ERROR=0', '-DGR_GL_LOG_CALLS=0', '-DSK_GL=1'], language: ['c', 'cpp'])
+
 if get_option('debug')
     add_global_arguments(['-DDEBUG=1'], language : ['cpp', 'c'])
 endif
@@ -32,7 +34,7 @@ endif
 add_global_arguments(['-DGR_GL_CHECK_ERROR=0', '-DGR_GL_LOG_CALLS=0', '-DSK_GL=1'], language : ['cpp', 'c'])
 
 cmake = import('cmake')
-dependencies = [dependency('spdlog'), dependency('sdl2'), cmake.subproject('yoga').dependency('yogacore')]
+dependencies = [dependency('spdlog'), dependency('sdl2'), cmake.subproject('yoga').dependency('yogacore'), dependency('skia')]
 
 inc_dirs = [ 'include' ]
 

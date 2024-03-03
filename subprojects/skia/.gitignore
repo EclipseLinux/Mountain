@@ -24,9 +24,8 @@ infra/bots/tools/luci-go/mac64/cipd
 infra/bots/tools/luci-go/mac64/isolate
 infra/bots/tools/luci-go/win64/cipd.exe
 infra/bots/tools/luci-go/win64/isolate.exe
-out/*
-!out/Config/
-!out/Config/*
+out/**/**/obj
+out/**/**/gen
 platform_tools/android/apps/build
 platform_tools/android/apps/*.properties
 platform_tools/android/apps/*/build
@@ -59,6 +58,8 @@ bin/ninja.version
 
 node_modules
 tools/lottiecap/filmstrip.png
+
+depot-tools
 
 bazel-*
 
