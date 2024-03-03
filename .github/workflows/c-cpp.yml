@@ -29,6 +29,10 @@ jobs:
       - name: Update WrapDB
         run: meson wrap update-db
 
+      - name: Build Skia
+        if: ${{ startsWith(runner.os, 'Windows') }}
+        run: cd subprojects/skia && bash ./gen_gn_and_build.sh windows x86_64 clang++ clang && cd ..
+
       - name: Configure Meson
         run: meson setup build
 
