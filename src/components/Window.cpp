@@ -1,7 +1,11 @@
 #include "components/Window.h"
 #include "SDL.h"
 #include "core/Application.h"
+#include "core/Canvas.h"
+#include "core/SkColor.h"
+#include "gpu/GrDirectContext.h"
 #include "yoga/YGNodeStyle.h"
+#include <GL/gl.h>
 
 namespace Mountain::Components
 {
@@ -31,6 +35,7 @@ namespace Mountain::Components
 		}
 
 		_context = SDL_GL_CreateContext(_window);
+		SDL_GL_MakeCurrent(_window, _context);
 
 		int xpos;
 		int ypos;
@@ -39,11 +44,26 @@ namespace Mountain::Components
 
 		YGNodeStyleSetPosition(YogaNode(), YGEdgeLeft, (float)xpos);
 		YGNodeStyleSetPosition(YogaNode(), YGEdgeTop, (float)ypos);
+
+		glViewport(0, 0, (int)Width(), (int)Height());
+		glClearColor(1, 1, 1, 1);
+		glClearStencil(0);
+		glClear(GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+
+		Internals::createCanvas(_window, this, _context, _surface, _skiaCtx);
 	}
 
 	void Window::Render()
 	{
 		SDL_GL_MakeCurrent(_window, _context);
+		mn_iGrContext = _skiaCtx;
+		mn_canvas = _surface->getCanvas();
+		mn_paint.reset();
+
+		mn_canvas->clear(SK_ColorWHITE);
+
+		mn_iGrContext->flushAndSubmit();
+
 		SDL_GL_SwapWindow(_window);
 	}
 

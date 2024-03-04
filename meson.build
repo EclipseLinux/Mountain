@@ -1,4 +1,4 @@
-project('Mountain', ['cpp', 'c'], version: '0.0.4', default_options: ['cpp_std=c++20'])
+project('Mountain', ['cpp', 'c'], version: '0.0.5', default_options: ['cpp_std=c++20'])
 
 sources = [
     'src/core/Application.cpp',
@@ -7,7 +7,8 @@ sources = [
     'src/core/Element.cpp',
     'src/utils/System.cpp',
     'src/components/Window.cpp',
-    'src/utils/SystemDefinition.cpp'
+    'src/utils/SystemDefinition.cpp',
+    'src/core/Canvas.cpp'
 ]
 
 cfg = configuration_data()
@@ -34,7 +35,7 @@ endif
 add_global_arguments(['-DGR_GL_CHECK_ERROR=0', '-DGR_GL_LOG_CALLS=0', '-DSK_GL=1'], language : ['cpp', 'c'])
 
 cmake = import('cmake')
-dependencies = [dependency('spdlog'), dependency('sdl2'), cmake.subproject('yoga').dependency('yogacore'), dependency('skia')]
+dependencies = [dependency('spdlog'), dependency('sdl2'), cmake.subproject('yoga').dependency('yogacore'), dependency('skia'), dependency('gl')]
 
 inc_dirs = [ 'include' ]
 
