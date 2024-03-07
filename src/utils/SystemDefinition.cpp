@@ -8,6 +8,7 @@ namespace Mountain::Internals
 		for (auto& tree : Application::main->_trees)
 		{
 			tree->EmitSignal("presentRender");
+			tree->InitRender();
 		}
 	}
 

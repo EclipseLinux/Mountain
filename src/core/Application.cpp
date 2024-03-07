@@ -95,8 +95,13 @@ namespace Mountain
 	{
 		SDL_Event event;
 
-		while (main->_mainWindow->Running())
+		while (main->_mainWindow != nullptr)
 		{
+			if (!main->_mainWindow->Running())
+			{
+				break;
+			}
+			
 			while (SDL_WaitEvent(&event) != 0)
 			{
 				if (event.type == SDL_QUIT ||

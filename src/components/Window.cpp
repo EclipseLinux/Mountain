@@ -34,9 +34,6 @@ namespace Mountain::Components
 			return;
 		}
 
-		_context = SDL_GL_CreateContext(_window);
-		SDL_GL_MakeCurrent(_window, _context);
-
 		int xpos;
 		int ypos;
 
@@ -44,6 +41,20 @@ namespace Mountain::Components
 
 		YGNodeStyleSetPosition(YogaNode(), YGEdgeLeft, (float)xpos);
 		YGNodeStyleSetPosition(YogaNode(), YGEdgeTop, (float)ypos);
+	}
+
+	void Window::InitRender()
+	{
+		_context = SDL_GL_CreateContext(_window);
+
+		if (_context == nullptr)
+		{
+			mn_coreError("Failed to create GL Context: {}", SDL_GetError());
+			Close();
+			return;
+		}
+
+		SDL_GL_MakeCurrent(_window, _context);
 
 		glViewport(0, 0, (int)Width(), (int)Height());
 		glClearColor(1, 1, 1, 1);

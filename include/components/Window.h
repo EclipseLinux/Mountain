@@ -18,6 +18,8 @@ namespace Mountain::Components
 		void Render() override;
 		void Close();
 
+		void InitRender() override;
+
 		inline auto Running() const -> bool
 		{
 			return _running;

@@ -110,6 +110,8 @@ namespace Mountain
 		virtual void Update(){};
 		virtual void Draw(){};
 
+		virtual void InitRender(){};
+
 		void Tick();
 		virtual void Render(){};
 
