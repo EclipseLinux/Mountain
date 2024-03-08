@@ -69,11 +69,18 @@ namespace Mountain
 
 	void Element::Draw()
 	{
-		mn_canvas->drawRect(SkRect::MakeXYWH(X(), Y(), Width(), Height()), mn_paint);
+		mn_canvas->drawRect(Bounds, mn_paint);
 	}
 
 	void Element::Render()
 	{
+		Bounds = SkRect::MakeXYWH(X(), Y(), Width(), Height());
+
+		if (Path.isEmpty())
+		{
+			Path.addRect(Bounds);
+		}
+		
 		if (!Visible)
 		{
 			return;
@@ -86,7 +93,7 @@ namespace Mountain
 			filter->PreRender(this);
 		}
 
-		mn_canvas->clipPath(_path, true);
+		mn_canvas->clipPath(Path, true);
 
 		Draw();
 

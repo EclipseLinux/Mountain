@@ -1,5 +1,8 @@
 #include "core/Application.h"
 #include "SDL.h"
+#include "components/Window.h"
+#include "core/Element.h"
+#include "core/Input.h"
 #include "core/Logger.h"
 #include "utils/StringUtils.h"
 #include "utils/System.h"
@@ -101,15 +104,74 @@ namespace Mountain
 			{
 				break;
 			}
-			
+
 			while (SDL_WaitEvent(&event) != 0)
 			{
-				if (event.type == SDL_QUIT ||
-					event.type == SDL_EventType::SDL_APP_TERMINATING)
-				{
-					Quit();
-				}
+				_handleEvents(&event);
 			}
+		}
+	}
+
+	void Application::_handleEvents(SDL_Event* event)
+	{
+		switch (event->type)
+		{
+		case SDL_QUIT:
+		case SDL_APP_TERMINATING:
+			Quit();
+			break;
+
+		case SDL_MOUSEBUTTONDOWN:
+		{
+			Input::mouseX = (float)event->button.x;
+			Input::mouseY = (float)event->button.y;
+
+			auto window =
+				std::find_if(_trees.begin(), _trees.end(),
+							 [=](auto tree) {
+								 return ((Components::Window*)tree)->WindowID() ==
+										event->button.windowID;
+							 });
+
+			if (window == _trees.end())
+			{
+				break;
+			}
+
+			auto* element = Input::HitTest(*window);
+
+			if (element == nullptr)
+			{
+				break;
+			}
+
+			switch (event->button.button)
+			{
+			case SDL_BUTTON_LEFT:
+				element->EmitSignal("click", element);
+				break;
+
+			case SDL_BUTTON_RIGHT:
+				element->EmitSignal("contextClick", element);
+				break;
+
+			case SDL_BUTTON_MIDDLE:
+				element->EmitSignal("middleClick", element);
+				break;
+
+			default:
+				break;
+			}
+		}
+		break;
+
+		case SDL_MOUSEMOTION:
+			Input::mouseX = (float)event->motion.x;
+			Input::mouseY = (float)event->motion.y;
+			break;
+
+		default:
+			break;
 		}
 	}
 

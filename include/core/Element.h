@@ -3,6 +3,7 @@
 #include "core/LayoutEnums.h"
 #include "core/SignalEmitter.h"
 #include "core/SkPath.h"
+#include "core/SkRect.h"
 #include "yoga/YGNodeLayout.h"
 #ifdef DEBUG
 #	include "utils/Demangler.h"
@@ -14,6 +15,8 @@
 
 namespace Mountain
 {
+	class Input;
+
 	/**
 	 * @brief Base class for the whole Mountain project, allowing you to create UI objects
 	 * Also emits signals
@@ -364,9 +367,14 @@ namespace Mountain
 		 */
 		virtual void Present(){};
 
-		inline auto Path() -> SkPath&
+		inline auto GetPath() -> SkPath&
 		{
-			return _path;
+			return Path;
+		}
+
+		inline auto GetBounds() -> SkRect&
+		{
+			return Bounds;
 		}
 
 	protected:
@@ -402,11 +410,13 @@ namespace Mountain
 		bool Visible{true};
 		bool Enabled{true};
 
+		SkPath Path;
+		SkRect Bounds;
+
 	private:
 		Element* _parent{nullptr};
 		YGNodeRef _node;
 		std::vector<Filters::BaseFilter*> _filters;
-		SkPath _path;
 
 		void _init(float width, float height);
 
@@ -426,5 +436,7 @@ namespace Mountain
 			return _parent == nullptr ? YGNodeLayoutGetTop(_node)
 									  : YGNodeLayoutGetTop(_node) + _parent->_y();
 		}
+
+		friend class Input;
 	};
 }

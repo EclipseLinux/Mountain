@@ -18,7 +18,8 @@ auto main(int argc, const char** argv) -> int
 					->Height(50)
 					->AddFilter<Filters::BackgroundColor>(0x9e54f7ff)
 					->AddFilter<Filters::BorderRadius>(25)
-					->AddFilter<Filters::BackdropShadow>(4, 4, 24 , Color(0, 0, 0, 128));
+					->AddFilter<Filters::BackdropShadow>(4, 4, 24, Color(0, 0, 0, 128))
+					->On("click", [=](auto element) { mn_info("Hi!"); });
 
 	app->Present();
 

@@ -1,4 +1,5 @@
 #pragma once
+#include "SDL_events.h"
 #include "components/Window.h"
 #include "core/Element.h"
 #include "core/SignalEmitter.h"
@@ -117,6 +118,8 @@ namespace Mountain
 
 		void _run();
 		static void RegisterSignals();
+
+		void _handleEvents(SDL_Event* event);
 
 		bool _sdlInitialized;
 

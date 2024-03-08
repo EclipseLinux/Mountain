@@ -81,6 +81,13 @@ namespace Mountain::Components
 
 	void Window::Draw()
 	{
+		Bounds = SkRect::MakeXYWH(X(), Y(), Width(), Height());
+
+		if (Path.isEmpty())
+		{
+			Path.addRect(Bounds);
+		}
+
 		mn_canvas->clear(_bgColor.ToARGB());
 	}
 

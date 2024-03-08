@@ -38,10 +38,15 @@ namespace Mountain::Components
 			return _running;
 		}
 
+		inline auto WindowID() -> unsigned long
+		{
+			return _window != nullptr ? SDL_GetWindowID(_window) : 0;
+		}
+
 	private:
 		static void SdlInit();
 
-		SDL_Window* _window;
+		SDL_Window* _window{nullptr};
 		SDL_GLContext _context;
 		sk_sp<SkSurface> _surface;
 		sk_sp<GrDirectContext> _skiaCtx;

@@ -26,13 +26,16 @@ namespace Mountain::Filters
 
 	void BorderRadius::PreRender(Element* element)
 	{
+		if (element->GetPath().isRect(&element->GetBounds()))
+		{
+			element->GetPath().reset();
+		}
+
 		auto rect = SkRRect::MakeEmpty();
 
-		rect.setNinePatch(SkRect::MakeXYWH(element->X(), element->Y(), element->Width(),
-										   element->Height()),
-						  _left, _top, _right, _bottom);
+		rect.setNinePatch(element->GetBounds(), _left, _top, _right, _bottom);
 
-		element->Path().addRRect(rect);
+		element->GetPath().addRRect(rect);
 	}
 
 	void BackdropShadow::PreRender(Element* element)
@@ -43,12 +46,13 @@ namespace Mountain::Filters
 		mn_paint.setMaskFilter(
 			SkMaskFilter::MakeBlur(kNormal_SkBlurStyle, _depth, false));
 
-		element->Path().offset(_x, _y);
+		element->GetPath().offset(_x, _y);
 
-		mn_canvas->drawPath(element->Path(), mn_paint);
+		mn_canvas->drawPath(element->GetPath(), mn_paint);
 
-		element->Path().offset(-_x, -_y);
+		element->GetPath().offset(-_x, -_y);
 		mn_paint.reset();
 		mn_paint.setColor(SK_ColorWHITE);
+		mn_paint.setAntiAlias(true);
 	}
 }
