@@ -33,14 +33,6 @@ namespace Mountain::Components
 			_running = false;
 			return;
 		}
-
-		int xpos;
-		int ypos;
-
-		SDL_GetWindowPosition(_window, &xpos, &ypos);
-
-		YGNodeStyleSetPosition(YogaNode(), YGEdgeLeft, (float)xpos);
-		YGNodeStyleSetPosition(YogaNode(), YGEdgeTop, (float)ypos);
 	}
 
 	void Window::InitRender()
@@ -56,26 +48,40 @@ namespace Mountain::Components
 
 		SDL_GL_MakeCurrent(_window, _context);
 
-		glViewport(0, 0, (int)Width(), (int)Height());
-		glClearColor(1, 1, 1, 1);
-		glClearStencil(0);
-		glClear(GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-
 		Internals::createCanvas(_window, this, _context, _surface, _skiaCtx);
+
+		for (auto& child : Children)
+		{
+			child->InitRender();
+		}
 	}
 
 	void Window::Render()
 	{
 		SDL_GL_MakeCurrent(_window, _context);
+
 		mn_iGrContext = _skiaCtx;
 		mn_canvas = _surface->getCanvas();
-		mn_paint.reset();
 
-		mn_canvas->clear(SK_ColorWHITE);
+		// set everything to just white by default cuz ye
+		mn_paint.reset();
+		mn_paint.setColor(SK_ColorWHITE);
+
+		Draw();
+
+		for (auto& child : Children)
+		{
+			child->Render();
+		}
 
 		mn_iGrContext->flushAndSubmit();
 
 		SDL_GL_SwapWindow(_window);
+	}
+
+	void Window::Draw()
+	{
+		mn_canvas->clear(_bgColor.ToARGB());
 	}
 
 	void Window::SdlInit()

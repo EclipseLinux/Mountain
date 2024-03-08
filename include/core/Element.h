@@ -1,6 +1,8 @@
 #pragma once
+#include "core/Filter.h"
 #include "core/LayoutEnums.h"
 #include "core/SignalEmitter.h"
+#include "core/SkPath.h"
 #include "yoga/YGNodeLayout.h"
 #ifdef DEBUG
 #	include "utils/Demangler.h"
@@ -38,11 +40,36 @@ namespace Mountain
 			InsertChild(child);
 			child->_parent = this;
 			child->Init();
-			_children.push_back(child);
+			Children.push_back(child);
 
 			EmitSignal("childNew", child);
 
 			return child;
+		}
+
+		/**
+		 * @brief Add a new filter to the Element
+		 *
+		 * @tparam T Type of Filter to add, must be derived from BaseFilter of course
+		 * @tparam Args Any type of argument passable to the Filter constructor
+		 * @param args Arguments to pass to the Filter constructor, if needed
+		 * @return Element* Updated element, for chaining
+		 */
+		template <typename T, typename... Args> auto AddFilter(Args&&... args) -> Element*
+		{
+			static_assert(
+				std::is_base_of<Filters::BaseFilter, T>::value,
+				"Expected T to be of type, or derived from Filters::BaseFilter");
+
+			auto filter = new T(args...);
+			_filters.push_back(filter);
+			filter->Init(this);
+
+			std::sort(_filters.begin(), _filters.end(),
+					  [](auto filterA, auto filterB)
+					  { return filterA->Priority() > filterB->Priority(); });
+
+			return this;
 		}
 
 		/**
@@ -58,7 +85,7 @@ namespace Mountain
 			static_assert(std::is_base_of<Element, T>::value,
 						  "Expected T to be of type, or derived from Element");
 
-			return std::ranges::any_of(_children, [=](auto child)
+			return std::ranges::any_of(Children, [=](auto child)
 									   { return typeid(T) == typeid(*child); });
 
 			return false;
@@ -71,7 +98,7 @@ namespace Mountain
 		 */
 		inline auto ChildrenCount() -> unsigned long
 		{
-			return _children.size();
+			return Children.size();
 		}
 
 #ifdef DEBUG
@@ -108,12 +135,12 @@ namespace Mountain
 		virtual ~Element();
 
 		virtual void Update(){};
-		virtual void Draw(){};
+		virtual void Draw();
 
 		virtual void InitRender(){};
 
 		void Tick();
-		virtual void Render(){};
+		virtual void Render();
 
 #pragma region Layout related stuff
 		/*
@@ -337,6 +364,11 @@ namespace Mountain
 		 */
 		virtual void Present(){};
 
+		inline auto Path() -> SkPath&
+		{
+			return _path;
+		}
+
 	protected:
 		/**
 		 * @brief Called when the Element is created
@@ -365,10 +397,16 @@ namespace Mountain
 		 */
 		virtual void CalculateLayout();
 
+		std::vector<Element*> Children;
+
+		bool Visible{true};
+		bool Enabled{true};
+
 	private:
 		Element* _parent{nullptr};
-		std::vector<Element*> _children;
 		YGNodeRef _node;
+		std::vector<Filters::BaseFilter*> _filters;
+		SkPath _path;
 
 		void _init(float width, float height);
 

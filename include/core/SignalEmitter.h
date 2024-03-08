@@ -28,7 +28,7 @@ namespace Mountain
 		 * have data, others nullptr)
 		 * @return T* Same instance of the class, for chaining
 		 */
-		auto On(std::string signal, const SignalHandler& handler) -> T*
+		auto On(std::string signal, SignalHandler handler) -> T*
 		{
 			_handlers[stringToLower(std::move(signal))].push_back(handler);
 			return (T*)this;

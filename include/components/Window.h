@@ -4,6 +4,7 @@
 #include "core/SkRefCnt.h"
 #include "core/SkSurface.h"
 #include "gpu/GrDirectContext.h"
+#include "utils/Color.h"
 
 namespace Mountain::Components
 {
@@ -16,7 +17,19 @@ namespace Mountain::Components
 
 		void Present() override;
 		void Render() override;
+		void Draw() override;
 		void Close();
+
+		[[nodiscard]] inline auto BackgroundColor() const -> Color
+		{
+			return _bgColor;
+		}
+
+		inline auto BackgroundColor(Color newColor) -> Window*
+		{
+			_bgColor = newColor;
+			return this;
+		}
 
 		void InitRender() override;
 
@@ -32,6 +45,7 @@ namespace Mountain::Components
 		SDL_GLContext _context;
 		sk_sp<SkSurface> _surface;
 		sk_sp<GrDirectContext> _skiaCtx;
+		Color _bgColor{0x000000};
 		std::string _title;
 		bool _running;
 	};

@@ -1,5 +1,7 @@
 #include "core/Element.h"
 #include "core/Application.h"
+#include "core/Canvas.h"
+#include "core/SkRect.h"
 #include "yoga/YGEnums.h"
 #include "yoga/YGNode.h"
 #include "yoga/YGNodeLayout.h"
@@ -19,7 +21,7 @@ namespace Mountain
 		Destroy();
 
 		YGNodeFree(_node);
-		for (const auto& child : _children)
+		for (const auto& child : Children)
 		{
 			delete child;
 		}
@@ -49,14 +51,58 @@ namespace Mountain
 
 	void Element::Tick()
 	{
+		if (!Enabled)
+		{
+			CalculateLayout();
+			return;
+		}
+
 		Update();
 
-		for (auto& child : _children)
+		for (auto& child : Children)
 		{
 			child->Tick();
 		}
 
 		CalculateLayout();
+	}
+
+	void Element::Draw()
+	{
+		mn_canvas->drawRect(SkRect::MakeXYWH(X(), Y(), Width(), Height()), mn_paint);
+	}
+
+	void Element::Render()
+	{
+		if (!Visible)
+		{
+			return;
+		}
+
+		mn_canvas->save();
+
+		for (auto& filter : _filters)
+		{
+			filter->PreRender(this);
+		}
+
+		mn_canvas->clipPath(_path, true);
+
+		Draw();
+
+		for (auto& child : Children)
+		{
+			child->Render();
+		}
+
+		for (auto& filter : _filters)
+		{
+			filter->PostRender(this);
+		}
+
+		Filters::BaseFilter::Reset();
+
+		mn_canvas->restore();
 	}
 
 #ifdef DEBUG
@@ -71,7 +117,7 @@ namespace Mountain
 
 		mn_coreDebug(indent + ToString());
 
-		for (const auto& child : _children)
+		for (const auto& child : Children)
 		{
 			child->_print(depth + 1);
 		}
@@ -81,7 +127,7 @@ namespace Mountain
 	{
 		str += "(" + ToString();
 
-		for (const auto& child : _children)
+		for (const auto& child : Children)
 		{
 			str += " ";
 			child->_toSExpr(str);
