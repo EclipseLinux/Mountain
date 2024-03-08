@@ -131,5 +131,6 @@ namespace Mountain
 		friend class Components::Window;
 		friend class Internals::RenderSystem;
 		friend class Internals::TickSystem;
+		friend class Input;
 	};
 }
