@@ -37,6 +37,17 @@ namespace Mountain::Filters
 			_bgColor = color;
 		}
 
+		inline auto BgColor() -> Color
+		{
+			return _bgColor;
+		}
+
+		inline auto BgColor(Color newColor) -> BackgroundColor*
+		{
+			_bgColor = newColor;
+			return this;
+		}
+
 		void PreRender(Element* element) override;
 
 		[[nodiscard]] auto Priority() const -> int override
@@ -45,7 +56,7 @@ namespace Mountain::Filters
 		}
 
 	private:
-		Color _bgColor;
+		class Color _bgColor;
 	};
 
 	class BorderRadius : public BaseFilter

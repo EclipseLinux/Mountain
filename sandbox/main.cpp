@@ -13,13 +13,23 @@ auto main(int argc, const char** argv) -> int
 					->JustifyContent(Layout::JustifyContent::Center)
 					->AlignItems(Layout::AlignItems::Center);
 
-	auto* btn = win->AddChild<Element>()
-					->Width(300)
-					->Height(50)
-					->AddFilter<Filters::BackgroundColor>(0x9e54f7ff)
-					->AddFilter<Filters::BorderRadius>(25)
-					->AddFilter<Filters::BackdropShadow>(4, 4, 24, Color(0, 0, 0, 128))
-					->On("click", [=](auto element) { mn_info("Hi!"); });
+	auto* btn =
+		win->AddChild<Element>()
+			->Width(300)
+			->Height(50)
+			->AddFilter<Filters::BackgroundColor>(0x9e54f7ff)
+			->AddFilter<Filters::BorderRadius>(25)
+			->AddFilter<Filters::BackdropShadow>(4, 4, 24, Color(0, 0, 0, 128));
+
+	btn->On("hover",
+			[=](auto element)
+			{
+				btn->GetFilter<Filters::BackgroundColor>()->BgColor(0x8f34ebff);
+				mn_info("I'm hovered!");
+			});
+
+	btn->On("unhover", [=](auto element)
+			{ btn->GetFilter<Filters::BackgroundColor>()->BgColor(0x9e54f7ff); });
 
 	app->Present();
 

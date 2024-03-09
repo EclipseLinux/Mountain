@@ -30,8 +30,6 @@ namespace Mountain
 		Blue = (hex >> 8) & 0xFF;
 		Alpha = (hex) & 0xFF;
 
-		mn_info("{} {} {} {}", Red, Green, Blue, Alpha);
-
 		_checkColorRange();
 	}
 

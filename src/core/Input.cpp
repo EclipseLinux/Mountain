@@ -60,6 +60,8 @@ namespace Mountain
 				break;
 			}
 
+			element->EmitSignal("mouseDown", &event->button.button);
+
 			if (event->button.clicks == 1)
 			{
 				switch (event->button.button)
@@ -104,9 +106,43 @@ namespace Mountain
 		break;
 
 		case SDL_MOUSEMOTION:
+		{
 			mouseX = (float)event->motion.x;
 			mouseY = (float)event->motion.y;
-			break;
+
+			auto window = std::find_if(
+				Application::main->_trees.begin(), Application::main->_trees.end(),
+				[=](auto tree) {
+					return ((Components::Window*)tree)->WindowID() ==
+						   event->button.windowID;
+				});
+
+			if (window == Application::main->_trees.end())
+			{
+				break;
+			}
+
+			auto* element = Input::HitTest(*window);
+
+			if (element == nullptr)
+			{
+				break;
+			}
+
+			if (hoveredElement != nullptr)
+			{
+				if (hoveredElement == element)
+				{
+					return;
+				}
+				
+				hoveredElement->EmitSignal("unhover", hoveredElement);
+			}
+
+			element->EmitSignal("hover", element);
+			hoveredElement = element;
+		}
+		break;
 
 		default:
 			break;

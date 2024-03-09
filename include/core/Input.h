@@ -13,6 +13,7 @@ namespace Mountain
 	private:
 		inline static float mouseX;
 		inline static float mouseY;
+		inline static Element* hoveredElement;
 
 		static void HandleInputEvents(SDL_Event* event);
 

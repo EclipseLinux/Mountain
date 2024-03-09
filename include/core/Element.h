@@ -4,11 +4,9 @@
 #include "core/SignalEmitter.h"
 #include "core/SkPath.h"
 #include "core/SkRect.h"
-#include "yoga/YGNodeLayout.h"
-#ifdef DEBUG
-#	include "utils/Demangler.h"
-#endif
+#include "utils/Demangler.h"
 #include "yoga/YGNode.h"
+#include "yoga/YGNodeLayout.h"
 #include <algorithm>
 #include <type_traits>
 #include <vector>
@@ -73,6 +71,50 @@ namespace Mountain
 					  { return filterA->Priority() > filterB->Priority(); });
 
 			return this;
+		}
+
+		/**
+		 * @brief Add a new filter to the Element
+		 *
+		 * @tparam T Type of Filter to get, must be derived from BaseFilter of course
+		 * @return T* The filter found, or nullptr if it was not found
+		 */
+		template <typename T> auto GetFilter() -> T*
+		{
+			static_assert(
+				std::is_base_of<Filters::BaseFilter, T>::value,
+				"Expected T to be of type, or derived from Filters::BaseFilter");
+
+			auto filter =
+				std::find_if(_filters.begin(), _filters.end(),
+							 [=](auto filter) { return typeid(*filter) == typeid(T); });
+
+			if (filter == _filters.end())
+			{
+				mn_coreWarn("No filter named {} found in element",
+							demangle(typeid(T).name()));
+			}
+
+			return filter != _filters.end() ? (T*)*filter : nullptr;
+		}
+
+		/**
+		 * @brief Checks if an Element has a specific filter
+		 *
+		 * @tparam T Type of Filter to check, must be derived from BaseFilter of course
+		 * @return true If it does indeed have the filter
+		 * @return false If it does not have the filter
+		 */
+		template <typename T> auto HasFilter() -> T*
+		{
+			static_assert(
+				std::is_base_of<Filters::BaseFilter, T>::value,
+				"Expected T to be of type, or derived from Filters::BaseFilter");
+
+			return static_cast<bool>(std::find_if(_filters.begin(), _filters.end(),
+								[=](auto filter) {
+									return typeid(*filter) == typeid(T);
+								}) != _filters.end());
 		}
 
 		/**
