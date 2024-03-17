@@ -58,7 +58,6 @@ namespace Mountain::Internals
 			auto system = std::make_shared<T>();
 
 			systems.push_back(system);
-			threads.emplace_back(&SystemManager::Run, system).detach();
 
 			currentSystems++;
 			mn_coreTrace("Allocating new thread for system {} ({} currently allocated)",
@@ -82,6 +81,14 @@ namespace Mountain::Internals
 									{ return dynamic_cast<T*>(ptr.get()) != nullptr; });
 
 			return std::dynamic_pointer_cast<T>(*sys);
+		}
+
+		static inline void RunAll()
+		{
+			for (auto& sys : systems)
+			{
+				threads.emplace_back(&SystemManager::Run, sys).detach();
+			}
 		}
 
 		static void Shutdown();

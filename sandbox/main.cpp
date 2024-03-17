@@ -1,3 +1,4 @@
+#include "components/Image.h"
 #include "core/Application.h"
 #include "core/Filter.h"
 #include "core/LayoutEnums.h"
@@ -13,13 +14,13 @@ auto main(int argc, const char** argv) -> int
 					->JustifyContent(Layout::JustifyContent::Center)
 					->AlignItems(Layout::AlignItems::Center);
 
-	auto* btn =
-		win->AddChild<Element>()
-			->Width(300)
-			->Height(50)
-			->AddFilter<Filters::BackgroundColor>(0x9e54f7ff)
-			->AddFilter<Filters::BorderRadius>(25)
-			->AddFilter<Filters::BackdropShadow>(4, 4, 24, Color(0, 0, 0, 128));
+	auto* btn = win->AddChild<Components::Image>()
+					->Content("ts.png")
+					->Width(300)
+					->Height(50)
+					->AddFilter<Filters::BackgroundColor>(0x9e54f7ff)
+					->AddFilter<Filters::BorderRadius>(25)
+					->AddFilter<Filters::BackdropShadow>(4, 4, 24, Color(0, 0, 0, 128));
 
 	btn->On("hover",
 			[=](auto element)

@@ -30,9 +30,9 @@ namespace Mountain
 		 * @tparam T Type of Element to add, must be derived from Element of course
 		 * @tparam Args Any type of argument passable to the Element constructor
 		 * @param args Arguments to pass to the Element constructor, if needed
-		 * @return Element* New element added
+		 * @return T* New element added
 		 */
-		template <typename T, typename... Args> auto AddChild(Args&&... args) -> Element*
+		template <typename T, typename... Args> auto AddChild(Args&&... args) -> T*
 		{
 			static_assert(std::is_base_of<Element, T>::value,
 						  "Expected T to be of type, or derived from Element");

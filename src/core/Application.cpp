@@ -58,6 +58,10 @@ namespace Mountain
 
 		spdlog::set_default_logger(spdlog::default_logger()->clone(_appName));
 
+		mn_renderSys = Internals::SystemManager::AddSystem<Internals::RenderSystem>();
+		mn_tickSys = Internals::SystemManager::AddSystem<Internals::TickSystem>();
+		mn_workerSys = Internals::SystemManager::AddSystem<Internals::System>();
+
 		mn_coreInfo("Initializing \"{}\", by \"{}\"", _appName, _appOrg);
 	}
 
@@ -86,9 +90,7 @@ namespace Mountain
 		// shi
 		if (_sdlInitialized && _mainWindow != nullptr)
 		{
-			mn_renderSys = Internals::SystemManager::AddSystem<Internals::RenderSystem>();
-			mn_tickSys = Internals::SystemManager::AddSystem<Internals::TickSystem>();
-			mn_workerSys = Internals::SystemManager::AddSystem<Internals::System>();
+			Internals::SystemManager::RunAll();
 
 			_run();
 		}

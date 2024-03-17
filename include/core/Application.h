@@ -3,6 +3,7 @@
 #include "components/Window.h"
 #include "core/Element.h"
 #include "core/SignalEmitter.h"
+#include "utils/System.h"
 #include "utils/SystemDefinition.h"
 #include <string>
 #include <vector>
@@ -108,6 +109,12 @@ namespace Mountain
 		[[nodiscard]] inline static auto Presented() -> bool
 		{
 			return main != nullptr ? main->_presented : false;
+		}
+
+		template <typename Func, typename... Args>
+		void Enqueue(Func&& func, Args&&... args)
+		{
+			mn_workerSys->Enqueue(func, args...);
 		}
 
 	private:
