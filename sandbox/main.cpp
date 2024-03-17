@@ -1,4 +1,4 @@
-#include "components/Image.h"
+#include "components/Text.h"
 #include "core/Application.h"
 #include "core/Filter.h"
 #include "core/LayoutEnums.h"
@@ -15,11 +15,7 @@ auto main(int argc, const char** argv) -> int
 					->JustifyContent(Layout::JustifyContent::Center)
 					->AlignItems(Layout::AlignItems::Center);
 
-	auto* btn = win->AddChild<Element>()
-					->Width(300)
-					->Height(50)
-					->AddFilter<Filters::BackgroundColor>(ThemeManager::Primary())
-					->AddFilter<Filters::BorderRadius>(25);
+	win->AddChild<Components::Text>()->Content("Hello world!");
 
 	app->Present();
 

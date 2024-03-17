@@ -136,6 +136,11 @@ namespace Mountain
 			return inverseOnSurface;
 		}
 
+		[[nodiscard]] static auto SurfaceContainer() -> Color*
+		{
+			return surfaceContainer;
+		}
+
 	private:
 		inline static Color* primary = new Color(0x88D1ECFF);
 		inline static Color* surfaceTint = new Color(0x88D1ECFF);

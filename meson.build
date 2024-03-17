@@ -11,7 +11,8 @@ sources = [
     'src/core/Canvas.cpp',
     'src/core/Filter.cpp',
     'src/utils/Color.cpp',
-    'src/core/Input.cpp'
+    'src/core/Input.cpp',
+    'src/components/Text.cpp'
 ]
 
 cfg = configuration_data()
