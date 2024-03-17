@@ -88,7 +88,7 @@ namespace Mountain::Components
 			Path.addRect(Bounds);
 		}
 
-		mn_canvas->clear(_bgColor.ToARGB());
+		mn_canvas->clear(_bgColor->ToARGB());
 	}
 
 	void Window::SdlInit()

@@ -32,17 +32,17 @@ namespace Mountain::Filters
 	class BackgroundColor : public BaseFilter
 	{
 	public:
-		BackgroundColor(Color color)
+		BackgroundColor(Color* color)
 		{
 			_bgColor = color;
 		}
 
-		inline auto BgColor() -> Color
+		inline auto BgColor() -> Color*
 		{
 			return _bgColor;
 		}
 
-		inline auto BgColor(Color newColor) -> BackgroundColor*
+		inline auto BgColor(Color* newColor) -> BackgroundColor*
 		{
 			_bgColor = newColor;
 			return this;
@@ -56,7 +56,7 @@ namespace Mountain::Filters
 		}
 
 	private:
-		class Color _bgColor;
+		class Color* _bgColor;
 	};
 
 	class BorderRadius : public BaseFilter
@@ -84,7 +84,7 @@ namespace Mountain::Filters
 	class BackdropShadow : public BaseFilter
 	{
 	public:
-		BackdropShadow(float xPos, float yPos, float depth, Color color)
+		BackdropShadow(float xPos, float yPos, float depth, Color* color)
 			: _color(color), _x(xPos), _y(yPos), _depth(depth){};
 
 		void PreRender(Element* element) override;
@@ -95,7 +95,7 @@ namespace Mountain::Filters
 		}
 
 	private:
-		Color _color;
+		Color* _color;
 		float _x;
 		float _y;
 		float _depth;

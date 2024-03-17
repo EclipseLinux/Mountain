@@ -61,7 +61,7 @@ namespace Mountain::Internals
 
 			currentSystems++;
 			mn_coreTrace("Allocating new thread for system {} ({} currently allocated)",
-						 demangle(typeid(*system).name()), (threads.size() - 1) + 1);
+						 demangle(typeid(*system).name()), (systems.size() - 1) + 1);
 
 			return system;
 		}

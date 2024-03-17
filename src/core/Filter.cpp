@@ -21,7 +21,7 @@ namespace Mountain::Filters
 
 	void BackgroundColor::PreRender(Element* element)
 	{
-		mn_paint.setColor(_bgColor.ToARGB());
+		mn_paint.setColor(_bgColor->ToARGB());
 	}
 
 	void BorderRadius::PreRender(Element* element)
@@ -42,7 +42,7 @@ namespace Mountain::Filters
 	{
 		mn_paint.setAntiAlias(true);
 
-		mn_paint.setColor(_color.ToARGB());
+		mn_paint.setColor(_color->ToARGB());
 		mn_paint.setMaskFilter(
 			SkMaskFilter::MakeBlur(kNormal_SkBlurStyle, _depth, false));
 
