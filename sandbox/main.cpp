@@ -15,14 +15,11 @@ auto main(int argc, const char** argv) -> int
 					->JustifyContent(Layout::JustifyContent::Center)
 					->AlignItems(Layout::AlignItems::Center);
 
-	auto* btn =
-		win->AddChild<Components::Image>()
-			->Content("ts.png")
-			->Width(300)
-			->Height(50)
-			->AddFilter<Filters::BackgroundColor>(ThemeManager::Primary())
-			->AddFilter<Filters::BorderRadius>(25)
-			->AddFilter<Filters::BackdropShadow>(4, 4, 24, Color(0, 0, 0, 128));
+	auto* btn = win->AddChild<Element>()
+					->Width(300)
+					->Height(50)
+					->AddFilter<Filters::BackgroundColor>(ThemeManager::Primary())
+					->AddFilter<Filters::BorderRadius>(25);
 
 	app->Present();
 
