@@ -11,9 +11,129 @@ namespace Mountain
 			return primary;
 		}
 
+		[[nodiscard]] static auto SurfaceTint() -> Color*
+		{
+			return surfaceTint;
+		}
+
+		[[nodiscard]] static auto OnPrimary() -> Color*
+		{
+			return onPrimary;
+		}
+
+		[[nodiscard]] static auto PrimaryContainer() -> Color*
+		{
+			return primaryContainer;
+		}
+
+		[[nodiscard]] static auto OnPrimaryContainer() -> Color*
+		{
+			return onPrimaryContainer;
+		}
+
+		[[nodiscard]] static auto Secondary() -> Color*
+		{
+			return secondary;
+		}
+
+		[[nodiscard]] static auto OnSecondary() -> Color*
+		{
+			return onSecondary;
+		}
+
+		[[nodiscard]] static auto OnSecondaryContainer() -> Color*
+		{
+			return onSecondaryContainer;
+		}
+
+		[[nodiscard]] static auto Tertiary() -> Color*
+		{
+			return tertiary;
+		}
+
+		[[nodiscard]] static auto OnTertiary() -> Color*
+		{
+			return onTertiary;
+		}
+
+		[[nodiscard]] static auto OnTertiaryContainer() -> Color*
+		{
+			return onTertiaryContainer;
+		}
+
+		[[nodiscard]] static auto Error() -> Color*
+		{
+			return error;
+		}
+
+		[[nodiscard]] static auto ErrorContainer() -> Color*
+		{
+			return errorContainer;
+		}
+
+		[[nodiscard]] static auto OnErrorContainer() -> Color*
+		{
+			return onErrorContainer;
+		}
+
 		[[nodiscard]] static auto Background() -> Color*
 		{
 			return background;
+		}
+
+		[[nodiscard]] static auto OnBackground() -> Color*
+		{
+			return onBackground;
+		}
+
+		[[nodiscard]] static auto Surface() -> Color*
+		{
+			return surface;
+		}
+
+		[[nodiscard]] static auto OnSurface() -> Color*
+		{
+			return onSurface;
+		}
+
+		[[nodiscard]] static auto SurfaceVariant() -> Color*
+		{
+			return surfaceVariant;
+		}
+
+		[[nodiscard]] static auto OnSurfaceVariant() -> Color*
+		{
+			return onSurfaceVariant;
+		}
+
+		[[nodiscard]] static auto Outline() -> Color*
+		{
+			return outline;
+		}
+
+		[[nodiscard]] static auto OutlineVariant() -> Color*
+		{
+			return outlineVariant;
+		}
+
+		[[nodiscard]] static auto Shadow() -> Color*
+		{
+			return shadow;
+		}
+
+		[[nodiscard]] static auto Scrim() -> Color*
+		{
+			return scrim;
+		}
+
+		[[nodiscard]] static auto InverseSurface() -> Color*
+		{
+			return inverseSurface;
+		}
+
+		[[nodiscard]] static auto InverseOnSurface() -> Color*
+		{
+			return inverseOnSurface;
 		}
 
 	private:
