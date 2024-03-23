@@ -15,7 +15,11 @@ auto main(int argc, const char** argv) -> int
 					->JustifyContent(Layout::JustifyContent::Center)
 					->AlignItems(Layout::AlignItems::Center);
 
-	win->AddChild<Components::Text>()->Content("Hello world!");
+	win->AddChild<Components::Text>()
+		->Content("Hello world!")
+		->FontSize(48)
+		->GetFilter<Filters::BackgroundColor>()
+		->BgColor(ThemeManager::Primary());
 
 	app->Present();
 

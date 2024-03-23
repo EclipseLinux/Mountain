@@ -451,6 +451,7 @@ namespace Mountain
 
 		bool Visible{true};
 		bool Enabled{true};
+		bool ShouldClip{true};
 
 		SkPath Path;
 		SkRect Bounds;

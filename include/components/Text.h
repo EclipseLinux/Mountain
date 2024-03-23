@@ -18,17 +18,26 @@ namespace Mountain::Components
 
 		inline void Init() override
 		{
+			ShouldClip = false;
+
 			YGNodeSetNodeType(YogaNode(), YGNodeTypeText);
 			YGNodeSetMeasureFunc(YogaNode(), MeasureFunc);
 			YGNodeSetContext(YogaNode(), this);
+
+			AddFilter<Filters::BackgroundColor>(new Color(0xFFFFFFFF));
 
 			Application::main->Enqueue(
 				[=, this]()
 				{
 					_typeface =
 						mn_fontMgr->legacyMakeTypeface("Inter", SkFontStyle::Normal());
+
 					_font = SkFont(_typeface);
+					_font.setSize(16);
 					_font.setSubpixel(true);
+
+					YGNodeMarkDirty(YogaNode());
+					CalculateLayout();
 				});
 		}
 
@@ -42,7 +51,17 @@ namespace Mountain::Components
 		inline auto Content(const std::string& newContent) -> Text*
 		{
 			_content = newContent;
-			_blob = SkTextBlob::MakeFromString(_content.c_str(), _font);
+			return this;
+		}
+
+		[[nodiscard]] inline auto FontSize() -> float
+		{
+			return _font.getSize();
+		}
+
+		inline auto FontSize(float newSize) -> Text*
+		{
+			_font.setSize(newSize);
 			return this;
 		}
 
@@ -50,7 +69,6 @@ namespace Mountain::Components
 		std::string _content;
 		SkFont _font;
 		sk_sp<SkTypeface> _typeface;
-		sk_sp<SkTextBlob> _blob;
 
 		static auto MeasureFunc(YGNodeConstRef node, float width, YGMeasureMode widthMode,
 								float height, YGMeasureMode heightMode) -> YGSize;

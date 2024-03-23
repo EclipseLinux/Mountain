@@ -80,7 +80,7 @@ namespace Mountain
 		{
 			Path.addRect(Bounds);
 		}
-		
+
 		if (!Visible)
 		{
 			return;
@@ -93,7 +93,10 @@ namespace Mountain
 			filter->PreRender(this);
 		}
 
-		mn_canvas->clipPath(Path, true);
+		if (ShouldClip)
+		{
+			mn_canvas->clipPath(Path, true);
+		}
 
 		Draw();
 
