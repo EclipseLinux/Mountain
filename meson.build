@@ -28,9 +28,21 @@ cfg.set('mn_sizeInt', cpp.sizeof('int'))
 cfg.set_quoted('mn_arch', host_machine.cpu_family())
 cfg.set_quoted('mn_endian', host_machine.endian())
 
-configure_file(configuration: cfg, output: 'MountainConfig.h', install: true, install_dir: 'share')
+configure_file(
+    configuration: cfg, 
+    output: 'MountainConfig.h', 
+    install: true, 
+    install_dir: 'share'
+)
 
-add_project_arguments(['-DGR_GL_CHECK_ERROR=0', '-DGR_GL_LOG_CALLS=0', '-DSK_GL=1'], language: ['c', 'cpp'])
+add_project_arguments([
+    '-DGR_GL_CHECK_ERROR=0', 
+    '-DGR_GL_LOG_CALLS=0', 
+    '-DSK_GL=1', 
+    '-ffunction-sections', 
+    '-fdata-sections'],
+    language: ['c', 'cpp']
+)
 
 if get_option('debug')
     add_global_arguments(['-DDEBUG=1'], language : ['cpp', 'c'])
@@ -43,7 +55,7 @@ dependencies = [dependency('spdlog'), dependency('sdl2'), cmake.subproject('yoga
 
 inc_dirs = [ 'include' ]
 
-mountain = library('mountain', sources: sources, dependencies: dependencies, include_directories: include_directories(inc_dirs), install: true)
+mountain = library('mountain', sources: sources, dependencies: dependencies, include_directories: include_directories(inc_dirs), install: true, link_args: '-Wl,-gc-sections')
 
 mountain_dep = declare_dependency(link_with: mountain, dependencies: dependencies, include_directories: include_directories(inc_dirs))
 
@@ -56,9 +68,9 @@ if get_option('tests') and get_option('debug')
         'tests/LayoutSuite.cpp'
     ]
 
-    tests = executable('test-suite', sources: tests_src, dependencies: [mountain_dep, gtest, gtest_mock])
+    tests = executable('test-suite', sources: tests_src, dependencies: [mountain_dep, gtest, gtest_mock], link_args: '-Wl,-gc-sections')
 
     test('Google Tests', tests)
 endif
 
-executable('sandbox', sources: 'sandbox/main.cpp', dependencies: mountain_dep)
+executable('sandbox', sources: 'sandbox/main.cpp', dependencies: mountain_dep, link_args: '-Wl,-gc-sections')

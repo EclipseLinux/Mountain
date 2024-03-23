@@ -1,6 +1,7 @@
 #pragma once
 #include "SDL_video.h"
 #include "core/Element.h"
+#include "core/SkFontMgr.h"
 #include "core/SkTypeface.h"
 #include "gpu/GrDirectContext.h"
 #include "include/core/SkCanvas.h"

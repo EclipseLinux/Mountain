@@ -1,6 +1,7 @@
 #include "core/Application.h"
 #include "SDL.h"
 #include "components/Window.h"
+#include "core/Canvas.h"
 #include "core/Element.h"
 #include "core/Input.h"
 #include "core/Logger.h"
@@ -61,6 +62,8 @@ namespace Mountain
 		mn_renderSys = Internals::SystemManager::AddSystem<Internals::RenderSystem>();
 		mn_tickSys = Internals::SystemManager::AddSystem<Internals::TickSystem>();
 		mn_workerSys = Internals::SystemManager::AddSystem<Internals::System>();
+
+		Enqueue(Internals::createFontMgr);
 
 		mn_coreInfo("Initializing \"{}\", by \"{}\"", _appName, _appOrg);
 	}
