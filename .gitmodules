@@ -1,0 +1,3 @@
+[submodule "subprojects/skia"]
+	path = subprojects/skia
+	url = https://github.com/EclipseLinux/skia
